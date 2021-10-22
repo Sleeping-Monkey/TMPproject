@@ -14,7 +14,7 @@
  
  </head>
    <body>
-   <form action="{{ url_for("home")}}">
+<!--   <form action="{{ url_for("home")}}">-->
  <div class="container">
         <div class="flat-design-form">
             <ul class="tabs">
@@ -28,7 +28,7 @@
             <div class="form-display show" id="login">
                 <h1>Login</h1>
 
-                <form action="" method="post" novalidate="">
+                <form action="{{ url_for('login')}}" method="post" novalidate="">
                     <fieldset>
                         <ul>
                             <li>
@@ -57,7 +57,7 @@
             <div class="form-display hide" id="register">
                 <h1>Register</h1>
 
-                <form action="" method="post" novalidate="">
+                <form action="{{ url_for('register')}}" method="post" novalidate="">
                     <fieldset>
                         <ul>
                             <li>
@@ -76,21 +76,21 @@
                                 </div>
                             </li>
 
-                            <li>
-                                <div class="item">
-                                    <input class='email' name="email"
-                                    placeholder="Email" required="required"
-                                    type="email">
-                                </div>
-                            </li>
+<!--                            <li>-->
+<!--                                <div class="item">-->
+<!--                                    <input class='email' name="email"-->
+<!--                                    placeholder="Email" required="required"-->
+<!--                                    type="email">-->
+<!--                                </div>-->
+<!--                            </li>-->
 
-                            <li>
-                                <div class="item">
-                                    <label><input name="url" placeholder=
-                                    "Website link" required="required" type=
-                                    "url"></label>
-                                </div>
-                            </li>
+<!--                            <li>-->
+<!--                                <div class="item">-->
+<!--                                    <label><input name="url" placeholder=-->
+<!--                                    "Website link" required="required" type=-->
+<!--                                    "url"></label>-->
+<!--                                </div>-->
+<!--                            </li>-->
 
                             <li><input class="button-register" id='send' type=
                             "submit" value="Sign Up"></li>
