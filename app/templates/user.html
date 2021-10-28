@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Тайный друг</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/test.css') }}"> 
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home">Главная</a></li>
+        <li><a href="user">Домашняя</a></li>
+        <li><a href="logout">Выход</a></li>
+      </ul>
+    </nav>
+    <h1>Страница пользователя</h1>  
+  </header>
+  <main>
+    <section id="game-list">
+      Тут список игр. 
+    </section>
+    <section id="game-create">
+      Отдел создания игр.
+    </section>
+  </main>
+  <footer>
+    Тут кто создатель всея. Одинаковое на всех страницах.
+  </footer>	
+</body>
+</html>

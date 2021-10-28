@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Тайный друг</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/test.css') }}"> 
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home">Главная</a></li>
+        <li><a href="user">Домашняя</a></li>
+        <li><a href="logout">Выход</a></li>
+      </ul>
+    </nav>
+    <h1>Страница игры.Где-то тут название игры(зависит от id)</h1>
+  </header>
+  <main>
+    <section id="user-list">
+      Тут всегда есть список участников. 
+    </section>
+    <section id="game-status">
+      Тут текущий статус игры: Регистрация\Распределение\Игра\Оценивание\Закрыта.
+    </section>
+  </main>
+  <footer>
+    Тут кто создатель всея. Одинаковое на всех страницах.
+  </footer>	
+</body>
+</html>

@@ -6,24 +6,22 @@ from app.db_interaction import add_user
 
 
 @app.route('/')
-@app.route('/index')
-def index():
-    return "Hello, World!"
-
-
+#@app.route('/index')
 @app.route('/home', methods=["GET", "POST"])
 def home():
     return flask.render_template('index.html')
 
-
-@app.route('/login', methods=["POST"])
+@app.route('/login', methods=["GET", "POST"])
 def login():
+    return flask.render_template('login.html')
+
+@app.route('/user', methods=["POST"])
+def user():
     login, passwd = request.form['name'], request.form['password']
     if log_user(login, passwd):
-        return "Welcome " + login + "!"
+        return flask.render_template('user.html')
     else:
         return "Wrong login or password"
-
 
 @app.route('/register', methods=["POST"])
 def register():
