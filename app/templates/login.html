@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Тайный друг</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/test.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}">
   </head>
   <body>
     <header>
@@ -20,38 +20,33 @@
       <section class="form-display show" id="login">
         <h2>Login</h2>
         <form action="{{ url_for('user')}}" method="post" novalidate="">
-          <fieldset>
-            <ul>
-              <li>
-                <input name="name" placeholder="Username" required="required" type="text">
-              </li>
-              <li>
-                <input name="password" placeholder="Password" required='required' type="password">
-              </li>
-              <li>
-                <input class="button-login" type="submit" value="Login">
-              </li>
-            </ul>
-          </fieldset>
+          <!--<ul>
+            <li>-->
+              <input name="name" placeholder="Username" required="required" type="text">
+            <!--</li>
+            <li>-->
+              <input name="password" placeholder="Password" required='required' type="password">
+            <!--</li>
+            <li>-->
+              <input class="button-login" type="submit" value="Login">
+            <!--</li>
+          </ul>-->
         </form>
       </section>
       <section class="form-display hide" id="register">
         <h2>Register</h2>
-
         <form action="{{ url_for('register')}}" method="post" novalidate="">
-            <fieldset>
-              <ul>
-                <li>
-                  <input name="name" placeholder="Username" required type="text">
-                </li>
-                <li>
-                  <input name="password" placeholder="Password" required type="text">
-                </li>
-                <li>
-                  <input class="button-register" id='send' type="submit" value="Sign Up">
-                </li>
-              </ul>
-            </fieldset>
+          <ul>
+            <li>
+              <input name="name" placeholder="Username" required type="text">
+            </li>
+            <li>
+              <input name="password" placeholder="Password" required type="text">
+            </li>
+            <li>
+              <input class="button-register" id='send' type="submit" value="Sign Up">
+            </li>
+          </ul>
         </form>
       </section>
     </main>

@@ -28,3 +28,11 @@ def register():
     login, passwd = request.form['name'], request.form['password']
     add_user(login, passwd)
     return "Welcome " + login + "!"
+
+@app.route('/creategame', methods=["POST"])
+def creategame():
+    return request.form['name']
+
+@app.route('/game', methods=["GET", "POST"])
+def game():
+    return flask.render_template('game.html')
