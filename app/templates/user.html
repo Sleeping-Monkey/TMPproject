@@ -28,23 +28,15 @@
     </section>
     <section id="game-create">
       <h3>Отдел создания игр.</h3>
-        <form action="{{ url_for('creategame')}}" method="post" novalidate="">
-            <!--<ul>
-              <li>-->
-                <input name="name" placeholder="Gamename" required="required" type="text">
-              <!--</li>
-              <li>-->
-                <input name="password" placeholder="Password" required='required' type="password">
-              <!--</li>
-              <li>-->
-                <input name="count" placeholder="5" required='required' type="number">
-              <!--</li>
-              <li>-->
-                <input class="button-create" type="submit" value="Create">
-              <!--</li>
-            </ul>-->
-        </form>
-      </section>
+      <form action="{{ url_for('creategame')}}" method="post" novalidate="">
+        <input name="name" placeholder="Gamename" required="required" type="text">
+        <br>
+        <input name="password" placeholder="Password" required='required' type="password">
+        <br>
+        <input name="count" placeholder="5" required='required' type="number">
+        <br>
+        <input class="button-create" type="submit" value="Create">
+      </form>
     </section>
   </main>
   <footer>
