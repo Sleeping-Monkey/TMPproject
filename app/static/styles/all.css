@@ -6,87 +6,74 @@
 }
 
 body {
-  background: url(../src/background_a.jpg) no-repeat;
-  -moz-background-size: 100%; /* Firefox 3.6+ */
-  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%; /* Opera 9.6+ */
-  background-size: 100%; /* Современные браузеры */
+  position: relative;
+  width: 1280px;
+  height: 1069px;
+
+  background: #FFFFFF;
 }
 
 header {
-  height: 20%;
-  align-content: center;
+  position: absolute;
+  width: 1280px;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+
+  background-color: #4B4A4A;
+  backdrop-filter: blur(4px);
 }
 
-nav {
-  height: 50%;
-  display: inline-block;
+nav ul {
+  position: absolute;
+  width: 1082px;
+  height: 29px;
+  left: 99px;
+  top: 10px;
 }
 
 nav ul li {
   display: inline;
 }
 
-li a {
-  text-decoration: none;
-  size: 100%;
-  color: black;
+nav ul li:first-child {
+  margin-right: 400px;
 }
 
-li a:visited {
-  color: black;
+nav ul li:last-child {
+  margin-left: 400px;
 }
 
+ul li img {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  left: 500px;
+  top: -10px;
 
-li a:hover {
-  color: red;
-}
+  background: url(../src/logo.png);
+  mix-blend-mode: normal;
+  border-radius: 256px;
+} 
 
-h1 {
-  height: 50%;
+ul li a {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
   text-align: center;
-}
+  letter-spacing: -0.02em;
 
-main {
-  position: inherit;
-  height: 70%;
+  color: #ECEBEC;
 }
-
-section {
-  text-align: center;
-  height: auto;
-}
-
-form {
-  width: max-content;
-  background-color: gray;
-  border: 5px solid gray;
-  border-radius: 4px;
-  align-self: center;
-  text-align: center;
-}
-
-form input {
-  width: max-content;
-  
-}
-
-input[type=submit] {
-  background-color: red;
-  border: 5px solid red;
-  border-radius: 4px;
-}
-
-input[type=text], input[type=password] {
-  border: 5px solid gray;
-  border-radius: 4px;
-}
-
 
 footer {
   position: absolute;
-  bottom: 0;
-  display: inline;
-  text-align: right;
-  height: 10%;
+  width: 1280px;
+  height: 149px;
+  left: 0px;
+  top: 1938px;
+
+  background: #000000;
 }

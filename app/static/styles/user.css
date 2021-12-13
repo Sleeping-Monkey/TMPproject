@@ -1,0 +1,126 @@
+#game-create {  
+  position: absolute;
+  width: 1280px;
+  height: 860px;
+  left: 0px;
+  top: 52px;
+  background: url(../src/background_black.jpg) no-repeat;
+  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
+  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%;  /*Opera 9.6+ */
+  background-size: 100%;  /*Современные браузеры */
+}
+
+#game-create h1 {
+  position: absolute;
+  width: 511px;
+  height: 67px;
+  left: 380px;
+  top: 72px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#game-create h3 {
+  position: absolute;
+  width: 286px;
+  height: 45px;
+  left: 485px;
+  top: 194px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#input-name {
+  position: absolute;
+  width: 405px;
+  height: 82px;
+  left: 426px;
+  top: 270px;
+}
+
+#input-password {
+  position: absolute;
+  width: 405px;
+  height: 77px;
+  left: 426px;
+  top: 383px;
+}
+
+#input-count {
+  position: absolute;
+  width: 405px;
+  height: 82px;
+  left: 426px;
+  top: 491px;
+}
+
+#input-name p, #input-password p, #input-count p {
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#input-name input, #input-password input, #input-count input {
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.button-create {
+  position: absolute;
+  width: 471px;
+  height: 81px;
+  left: 400px;
+  top: 651px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+  background: #E81120;
+}

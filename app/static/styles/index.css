@@ -1,7 +1,334 @@
-body {
+#main-section {  
+  position: absolute;
+  width: 1280px;
+  height: 860px;
+  left: 0px;
+  top: 52px;
   background: url(../src/background.jpg) no-repeat;
-  -moz-background-size: 100%; /* Firefox 3.6+ */
-  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%; /* Opera 9.6+ */
-  background-size: 100%; /* Современные браузеры */
+  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
+  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%;  /*Opera 9.6+ */
+  background-size: 100%;  /*Современные браузеры */
+}
+
+h1 {
+  position: absolute;
+  width: 514px;
+  height: 55.98px;
+  left: 383px;
+  top: 134.31px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 80px;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #F7F7F7;
+}
+
+#right-main {
+  position: absolute;
+  width: 502px;
+  height: 268.12px;
+  left: 697px;
+  top: 324.76px;
+}
+
+#right-main h3 {
+  position: absolute;
+  width: 485.71px;
+  height: 268.12px;
+  left: 0px;
+  top: 0px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 45px;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#right-main p {
+  position: absolute;
+  width: 502px;
+  height: 143px;
+  left: 0px;
+  top: 110.52px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#rules-section {
+  position: absolute;
+  width: 1280px;
+  height: 1026px;
+  left: 0px;
+  top: 912px;
+
+  background: url(../src/background_white.png) no-repeat;
+  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
+  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%;  /*Opera 9.6+ */
+  background-size: 100%;  /*Современные браузеры */
+}
+
+#rules-section h3 {
+  position: absolute;
+  width: 766px;
+  height: 70.3px;
+  left: 257px;
+  top: 130px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+#rules-section h4 {
+  position: absolute;
+  width: 378px;
+  height: 60.47px;
+  left: 441px;
+  top: 347px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  
+  position: absolute;
+  width: 479px;
+  height: 312px;
+  left: 400px;
+  top: 396px;
+}
+
+dt {
+  grid-column-start: 1;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 44px;
+
+  letter-spacing: -0.02em;
+
+color: #FF0000;
+}
+
+dd {
+  grid-column-start: 2;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.02em;
+
+  text-align: center;
+
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+  position: absolute;
+  width: 471px;
+  height: 81px;
+  left: 405px;
+  top: 810px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  border: none;
+
+  background-color: #E81120;
+  color: #FFFFFF;
+}
+
+.red {
+  color: #E81120;
+}
+
+#login-section, #register-section {
+  position: absolute;
+  width: 1280px;
+  height: 860px;
+  left: 0px;
+  top: 912px;
+
+  background: url(../src/background_black.jpg) no-repeat;
+  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
+  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%;  /*Opera 9.6+ */
+  background-size: 100%;  /*Современные браузеры */
+}
+
+#login-section h3, #register-section h3 {
+  position: absolute;
+  width: 122px;
+  height: 60px;
+  left: 579px;
+  top: 134px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#input-name {
+  position: absolute;
+  width: 519px;
+  height: 108px;
+  left: 380px;
+  top: 260px;
+}
+
+#input-name p {
+  position: absolute;
+  width: 519px;
+  height: 45px;
+  left: 0px;
+  top: 0px;
+  
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  
+  color: #FFFFFF;
+}
+
+#input-name input {
+  position: absolute;
+  width: 319px;
+  height: 37px;
+  left: 100px;
+  top: 71px;
+
+  color: #000000;
+  background: #FFFFFF;
+}
+
+#input-password {
+  position: absolute;
+  width: 319px;
+  height: 108px;
+  left: 480px;
+  top: 435px;
+}
+
+#input-password p {
+  position: absolute;
+  width: 299px;
+  height: 45px;
+  left: 11px;
+  top: 0px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#input-password input {
+  position: absolute;
+  width: 319px;
+  height: 37px;
+  left: 0px;
+  top: 71px;
+
+  color: #000000;
+  background: #FFFFFF;
+}
+
+section form input {
+  position: absolute;
+  width: 327px;
+  height: 63px;
+  left: 472px;
+  top: 670px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+  background: #FF0000;
+}
+
+#login-section button, #register-section button {
+  position: absolute;
+  width: 147px;
+  height: 17px;
+  left: 562px;
+  top: 742px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+
+  border: 1px solid #B62121;
 }

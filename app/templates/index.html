@@ -11,19 +11,63 @@
         <nav>
           <ul>
             <li><a href="home">Главная</a></li>
-            <li></li>
-            <li><a href="login">Вход\Регистрация</a></li>
+            <li><img href="../static/src/logo.png"></li>
+            <li><a id="show-login">Вход | Регистрация</a></li>
           </ul>
         </nav>
-        <h1>Главная страница</h1>
     </header>
     <main>
-        <section>
-            Тут можно написать что-то про игру и то, что мы придумали...
-        </section>
+        <section id="main-section">
+            <h1>Тайный друг</h1>
+            <div id="right-main">
+              <h3>Организуйте обмен подарками</h3>
+              <p>Играйте в Тайного друга с коллегами и друзьями, всей семьей или просто с интернет знакомыми. </p>
+            </div>
+          </section>
+          <section id="rules-section">
+            <h3>Создать игру <a id="red">быстро</a> и <a class="red">просто</a></h3>
+            <h4><a class="red">3</a> шага и игра создана</h4>
+            <dl>
+              <dt>1.</dt><dd>Задайте как игра будет называться, когда будет вручение подарков.</dd>
+              <dt>2.</dt><dd>Расскажите, как будете получать подарки.</dd>
+              <dt>3.</dt><dd>Расшарьте ссылку для вступления новых игроков.</dd>
+            </dl>
+            <button id="button-create-game" id='send' type="submit" value="create-game">Создать игру</button>
+          </section>
+          <section id="login-section">
+            <h3>Вход</h3>
+            <form action="{{ url_for('user')}}" method="post" novalidate="">
+              <div id="input-name">
+                <p>Введите имя пользователя</p>
+                <input name="name" placeholder="Username" required="required" type="text">
+              </div>
+              <div id="input-password">
+                <p>Введите пароль</p>
+                <input name="password" placeholder="Password" required='required' type="password">
+              </div>
+              <input class="button-login" type="submit" value="Завершить">
+            </form>
+            <button id='show-register'>Зарегистрироваться</button>
+          </section>
+          <section id="register-section">
+            <h3>Регистрация</h3>
+            <form action="{{ url_for('register')}}" method="post" novalidate="">
+              <div id="input-name">
+                <p>Введите имя пользователя</p>
+                <input name="name" placeholder="Username" required="required" type="text">
+              </div>
+              <div id="input-password">
+                <p>Введите пароль</p>
+                <input name="password" placeholder="Password" required='required' type="password">
+              </div>
+              <input class="button-register" type="submit" value="Завершить">
+            </form>
+            <button id='show-login'>Войти</button>
+          </section>
     </main>
     <footer>
         Тут кто создатель всея. Одинаковое на всех страницах.
     </footer>	
+    <script src="../static/js/script.js"></script>
 </body>
 </html>

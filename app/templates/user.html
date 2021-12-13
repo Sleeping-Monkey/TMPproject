@@ -4,43 +4,56 @@
     <meta charset="utf-8">
     <title>Тайный друг</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/user.css') }}"> 
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="home">Главная</a></li>
-        <li><a href="user">Домашняя</a></li>
-        <li><a href="logout">Выход</a></li>
+        <li><img href="../static/src/logo.png"></li>
+        <li><a>Выход</a></li>
       </ul>
     </nav>
-    <h1>Страница пользователя</h1>  
   </header>
   <main>
     <section id="game-list">
-      Тут список игр.
+      <h5>Список игр</h5>
       <ul>
         <li><a href="id1">Имя игры1</a></li>
         <li><a href="id2">Имя игры2</a></li>
         <li><a href="id3">Имя игры3</a></li>
         <li><a href="idn">...</a></li>
       </ul>
-    </section>
+      <form action="{{ url_for('joingame')}}" method="post" novalidate="">
+        <p>Введите идентификатор игры</p>
+        <input name="id" placeholder="gameid" required="required" type="text">
+        <input class="button-join" type="submit" value="Присоединиться к игре">
+      </form>
+    </section> 
     <section id="game-create">
-      <h3>Отдел создания игр.</h3>
+      <h1>Страница игрока</h1>
+      <h3>Создание игры</h3>
       <form action="{{ url_for('creategame')}}" method="post" novalidate="">
-        <input name="name" placeholder="Gamename" required="required" type="text">
-        <br>
-        <input name="password" placeholder="Password" required='required' type="password">
-        <br>
-        <input name="count" placeholder="5" required='required' type="number">
-        <br>
+        <div id="input-name">
+          <p>Название игры</p>
+          <input name="name" placeholder="Gamename" required="required" type="text">
+        </div>
+        <div id="input-password">
+          <p>Пароль</p>
+          <input name="password" placeholder="Password" required='required' type="password">
+        </div>
+        <div id="input-count">
+          <p>Количество участников</p>
+          <input name="count" placeholder="5" required='required' type="number">
+        </div>
         <input class="button-create" type="submit" value="Create">
       </form>
     </section>
   </main>
   <footer>
     Тут кто создатель всея. Одинаковое на всех страницах.
-  </footer>	
+  </footer>
+  <script src="../static/js/script.js"></script>
 </body>
 </html>
