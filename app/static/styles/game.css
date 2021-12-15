@@ -1,0 +1,156 @@
+#first {  
+  position: absolute;
+  width: 1280px;
+  height: 860px;
+  left: 0px;
+  top: 52px;
+  background: url(../src/background_black.jpg) no-repeat;
+  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
+  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%;  /*Opera 9.6+ */
+  background-size: 100%;  /*Современные браузеры */
+}
+
+h2 {
+  position: absolute;
+  width: 391px;
+  height: 60px;
+  left: 449px;
+  top: 65px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#first p {
+  position: absolute;
+  width: 335.17px;
+  height: 28.21px;
+  left: 475.61px;
+  top: 160px;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+#first ul {
+  position: absolute;
+  width: 486px;
+  height: 267.04px;
+  left: 399px;
+  top: 207.96px;
+
+  background: #FFFFFF;
+}
+
+#first ul li {
+  margin: 0;
+  display:none;
+}
+
+table {
+  position: absolute;
+  width: 890px;
+  height: 220px;
+  left: 196px;
+  top: 534px;
+}
+
+tr {
+  height: 44px;
+}
+
+.table-name {
+  width: 445px;
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
+
+.table-value {
+  width: 445px;
+  height: 40px;
+
+  background: #FFFFFF;
+}
+
+#gift-given {
+  position: absolute;
+  width: 367px;
+  height: 201px;
+  right: 0px;
+  top: 60px;
+
+  background: url(../src/background_white.png);
+}
+
+#gift-given h5 {
+  position: absolute;
+  width: 287px;
+  height: 63.37px;
+  left: 40px;
+  top: 35.2px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+#gift-given button {
+  position: absolute;
+  width: 145px;
+  height: 43.25px;
+  top: 125px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+  background: #D20000;
+}
+
+#button-yes {
+  left: 27px;
+}
+
+#button-no {
+  left: 193px;
+}

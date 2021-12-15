@@ -1,60 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8">
   <title>Тайный друг</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="../static/styles/all.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles/game.css">
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="home">Главная</a></li>
-        <li><a href="user">Домашняя</a></li>
-        <li><a href="logout">Выход</a></li>
+        <li><img href="../static/src/logo.png"></li>
+        <li><a id="show-login">Выход</a></li>
       </ul>
     </nav>
-    <h1>Страница игры.Где-то тут название игры(зависит от id)</h1>
   </header>
   <main>
-    <section id="user-list">
-      Тут всегда есть список участников. Выглядит как-то так:
+    <section id="first">
+      <h2>Страница игры</h2>
+      <p>Список участников</p>
       <ul>
         <li><a href="userid">Имя участника 1</a></li>
         <li><a href="userid">Имя участника 2</a></li>
         <li><a href="userid">Имя участника 3</a></li>
         <li><a href="userid">...</a></li>
-      </ul> 
+      </ul>
+      <table>
+        <tr>
+          <td class="table-name">Название игры</td><td class="table-name">Вручение подарков состоится</td>
+        </tr>
+        <tr>
+          <td class="table-value">Подтягивается из базы</td>
+          <td class="table-value">Подтягивается из базы</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="table-name">Ты даришь подарок</td>
+        </tr>
+        <tr>
+          <td class="table-value">Появится, когда все участники добавятся =)</td>
+        </tr>
+      </table>
     </section>
-    <section id="game-status">
-      <p>Тут текущий статус игры: Регистрация\Распределение\Игра\Оценивание\Закрыта.
-        <br>+Панель переключения для создателя игры<br>
-        (может бокс с выбором?..)
-      </p>
-      <h4>-Регистрация:</h4>
-      <p>--Увеличивает список участников.</p>
-        
-      <h5>(
-      -Распределение:
-        --Запуск алгоритма от рейтингов.
-      ) <-- Скрытое? То есть происходит всегда в переходе от регистрации к игре. Видимо не нужно как элемент здесь.
-      </h5>
-
-      <h4>-Игра:</h4>
-      <p>
-        --У каждого игрока отображается его подопечный(тот, кому дарит) <br>
-        --Просто ожидание. Можно поставить что-то в стиле таймера\секундомера сколько осталось\уже_идёт
-      </p>
-      <h4>-Оценивание:</h4>
-      <p>
-        --Можно для начала просто бокс со значениями от 0 до 5. Уже после что-то интеллектуальное.<br>
-        PS Подумать про пересчёт. Как среднее? Как что?
-      </p>
-      <h4>-Закрытие:</h4>
-      <p>
-        --Автоматически после того, как все оценили или создателем (подумать что с рейтингом тогда)<br>
-        --Отображаются все подопечные и дарители (и оценка?)
-      </p>
+    <section id="gift-given">
+      <h5>Вы сделали подарок?</h5>
+      <button id="button-yes">Да</button>
+      <button id="button-no">Нет</button>
     </section>
   </main>
   <footer>

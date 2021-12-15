@@ -13,9 +13,6 @@
 
 #game-create h1 {
   position: absolute;
-  width: 511px;
-  height: 67px;
-  left: 380px;
   top: 72px;
 
   font-family: Merriweather;
@@ -23,7 +20,6 @@
   font-weight: bold;
   font-size: 48px;
   line-height: 60px;
-  display: flex;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -33,9 +29,6 @@
 
 #game-create h3 {
   position: absolute;
-  width: 286px;
-  height: 45px;
-  left: 485px;
   top: 194px;
 
   font-family: Merriweather;
@@ -43,7 +36,6 @@
   font-weight: bold;
   font-size: 36px;
   line-height: 45px;
-  display: flex;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -90,6 +82,9 @@
 }
 
 #input-name input, #input-password input, #input-count input {
+  width: 405px;
+  height: 40px;
+
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
@@ -116,11 +111,107 @@
   font-weight: bold;
   font-size: 36px;
   line-height: 45px;
-  display: flex;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
   background: #E81120;
+}
+
+#game-list {
+  position: absolute;
+  width: 367px;
+  height: 862px;
+  left: 0px;
+  top: 60px;
+
+  background: url(../src/background_white.png);
+}
+
+#game-list h5 {
+  position: absolute;
+  width: 287px;
+  height: 63.37px;
+  top: 35.2px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+#game-list ul {
+  position: absolute;
+  width: 287px;
+  height: 444.58px;
+  left: 40px;
+  top: 98.57px;
+
+  color: white;
+  background-color: #37383C;
+}
+
+#game-list ul li {
+  margin: 0;
+  display:none;
+}
+
+#game-list form p {
+  position: absolute;
+  width: 283px;
+  height: 41.24px;
+  left: 44px;
+  top: 589.42px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+#game-id {
+  position: absolute;
+  width: 286px;
+  height: 53.31px;
+  left: 41px;
+  top: 647.76px;
+
+  color: #000000;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#button-join {
+  position: absolute;
+  width: 286px;
+  height: 43.25px;
+  left: 41px;
+  top: 727.22px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+  background: #D20000;
 }

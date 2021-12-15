@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <title>Тайный друг</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}"> 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/user.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="../static/styles/all.css"> 
+    <link rel="stylesheet" type="text/css" href="../static/styles/user.css"> 
 </head>
 <body>
   <header>
@@ -17,20 +17,6 @@
     </nav>
   </header>
   <main>
-    <section id="game-list">
-      <h5>Список игр</h5>
-      <ul>
-        <li><a href="id1">Имя игры1</a></li>
-        <li><a href="id2">Имя игры2</a></li>
-        <li><a href="id3">Имя игры3</a></li>
-        <li><a href="idn">...</a></li>
-      </ul>
-      <form action="{{ url_for('joingame')}}" method="post" novalidate="">
-        <p>Введите идентификатор игры</p>
-        <input name="id" placeholder="gameid" required="required" type="text">
-        <input class="button-join" type="submit" value="Присоединиться к игре">
-      </form>
-    </section> 
     <section id="game-create">
       <h1>Страница игрока</h1>
       <h3>Создание игры</h3>
@@ -47,13 +33,26 @@
           <p>Количество участников</p>
           <input name="count" placeholder="5" required='required' type="number">
         </div>
-        <input class="button-create" type="submit" value="Create">
+        <input class="button-create" type="submit" value="Создать игру">
+      </form>
+    </section>
+    <section id="game-list">
+      <h5>Список игр</h5>
+      <ul>
+        <li><a href="id1">Имя игры1</a></li>
+        <li><a href="id2">Имя игры2</a></li>
+        <li><a href="id3">Имя игры3</a></li>
+        <li><a href="idn">...</a></li>
+      </ul>
+      <form action="{{ url_for('joingame')}}" method="post" novalidate="">
+        <p>Введите идентификатор игры</p>
+        <input id="game-id" name="gameid" placeholder="gameid" required="required" type="text">
+        <input id="button-join" type="submit" value="Присоединиться к игре">
       </form>
     </section>
   </main>
   <footer>
     Тут кто создатель всея. Одинаковое на всех страницах.
   </footer>
-  <script src="../static/js/script.js"></script>
 </body>
 </html>
