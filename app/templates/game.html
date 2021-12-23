@@ -48,9 +48,44 @@
       <button id="button-yes">Да</button>
       <button id="button-no">Нет</button>
     </section>
+    <section id="second-section">
+      <h2>Оцените игру</h2>
+      <p>Название игры</p>
+      <p class="name-value">Название из базы</p>
+      <h5>Оцените подарок, который вам подарили от 0 до 10:</h5>  
+      <form>
+        <input name="grade" placeholder="0" required="required" type="number">
+        <p>Чтобы узнать, кто сделал вам подарок, нажмите кнопку завершить</p>
+        <input class="button-login" type="submit" value="Завершить">        
+      </form>
+    </section>
+    <section id="final">
+      <h2>Игра завершена</h2>
+      <table>
+        <tr>
+          <td class="table-name">Вам дарил подарок</td>
+          <td class="table-name">Вы дарили подарок</td>
+        </tr>
+        <tr>
+          <td class="table-value">Подтягивается из базы</td>
+          <td class="table-value">Подтягивается из базы</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="table-name">Оценка подарка, который подарили тебе</td>
+          <td class="table-name">Оценка подарка, который подарил ты</td>
+        </tr>
+        <tr>
+          <td class="table-value">Подтягивается из базы</td>
+          <td class="table-value">Человек пока что не выстивил оценку. Подожди</td>
+        </tr>
+      </table>
+      <button id="to-user-page">Закрыть</button>
+    </section>
   </main>
   <footer>
     Тут кто создатель всея. Одинаковое на всех страницах.
-  </footer>	
+  </footer>
+  <script src="../static/js/game.js"></script>	
 </body>
 </html>
