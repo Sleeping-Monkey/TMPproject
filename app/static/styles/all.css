@@ -1,55 +1,32 @@
 * {
   margin: 0; 
   padding: 0px;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
+  top: 0px;
+  font-family: 'Merriweather', serif;
+  font-family: 'Montserrat', sans-serif;  
 }
 
 body {
-  position: relative;
-  width: 1280px;
-  height: 1069px;
-
   background: #FFFFFF;
 }
 
 header {
-  position: absolute;
-  width: 1280px;
-  height: 60px;
-  left: 0px;
-  top: 0px;
-
   background-color: #4B4A4A;
-  backdrop-filter: blur(4px);
-}
-
-nav ul {
-  position: absolute;
-  width: 1082px;
-  height: 29px;
-  left: 99px;
-  top: 10px;
 }
 
 nav ul li {
+  margin-right: 10%;
+  margin-left: 10%;
   display: inline;
 }
 
-nav ul li:first-child {
-  margin-right: 400px;
-}
-
-nav ul li:last-child {
-  margin-left: 400px;
-}
-
 ul li img {
-  position: absolute;
   width: 54px;
   height: 54px;
-  left: 500px;
-  top: -10px;
+  top: 5px;
 
   background: url(../src/logo.png);
   mix-blend-mode: normal;
@@ -57,11 +34,9 @@ ul li img {
 } 
 
 ul li a {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 29px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 200%;
+  top: -15px;
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -69,11 +44,5 @@ ul li a {
 }
 
 footer {
-  position: absolute;
-  width: 1280px;
-  height: 149px;
-  left: 0px;
-  top: 1938px;
-
   background: #000000;
 }

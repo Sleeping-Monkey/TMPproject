@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Тайный друг</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}"> 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css') }}"> 
-</head>
-<body>
+  </head>
+  <body>
     <header>
         <nav>
           <ul>
@@ -37,14 +40,10 @@
           <section id="login-section">
             <h3>Вход</h3>
             <form action="{{ url_for('user')}}" method="post" novalidate="">
-              <div id="input-name">
-                <p>Введите имя пользователя</p>
-                <input name="name" placeholder="Username" required="required" type="text">
-              </div>
-              <div id="input-password">
-                <p>Введите пароль</p>
-                <input name="password" placeholder="Password" required='required' type="password">
-              </div>
+              <p>Введите имя пользователя</p>
+              <input name="name" placeholder="Username" required="required" type="text">
+              <p>Введите пароль</p>
+              <input name="password" placeholder="Password" required='required' type="password">
               <input class="button-login" type="submit" value="Завершить">
             </form>
             <button id='show-register'>Зарегистрироваться</button>
@@ -52,22 +51,18 @@
           <section id="register-section">
             <h3>Регистрация</h3>
             <form action="{{ url_for('register')}}" method="post" novalidate="">
-              <div id="input-name">
-                <p>Введите имя пользователя</p>
-                <input name="name" placeholder="Username" required="required" type="text">
-              </div>
-              <div id="input-password">
-                <p>Введите пароль</p>
-                <input name="password" placeholder="Password" required='required' type="password">
-              </div>
+              <p>Введите имя пользователя</p>
+              <input name="name" placeholder="Username" required="required" type="text">
+              <p>Введите пароль</p>
+              <input name="password" placeholder="Password" required='required' type="password">
               <input class="button-register" type="submit" value="Завершить">
             </form>
             <button id='show-login'>Войти</button>
-          </section>
+	  </section>
     </main>
     <footer>
         Тут кто создатель всея. Одинаковое на всех страницах.
-    </footer>	
-    <script src="../static/js/script.js"></script>
-</body>
+    </footer>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+  </body>
 </html>
