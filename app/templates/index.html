@@ -14,7 +14,7 @@
         <nav>
           <ul>
             <li><a href="home">Главная</a></li>
-            <li><a id="show-login">Вход | Регистрация</a></li>
+            <li><a id='login-click'>Вход | Регистрация</a></li>
           </ul>
 	  <img src="{{url_for('static', filename='/src/logo.png')}}"ref="../static/src/logo.png">
         </nav>
@@ -46,7 +46,7 @@
               <input name="password" placeholder="Password" required='required' type="password">
               <input class="button-login" type="submit" value="Завершить">
             </form>
-            <button id='show-register'>Зарегистрироваться</button>
+            <input id="show-register" type="submit" value="Зарегистрироваться">
           </section>
           <section id="register-section">
             <h3>Регистрация</h3>
@@ -57,7 +57,7 @@
               <input name="password" placeholder="Password" required='required' type="password">
               <input class="button-register" type="submit" value="Завершить">
             </form>
-            <button id='show-login'>Войти</button>
+            <input id="show-login" type="submit" value="Войти">
 	  </section>
     </main>
     <footer>
