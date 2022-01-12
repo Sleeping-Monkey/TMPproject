@@ -12,13 +12,15 @@
       <ul>
         <li><a href="home">Главная</a></li>
         <li><img href="../static/src/logo.png"></li>
-        <li><a>Выход</a></li>
+        <li><a href="logout">Выход</a></li>
       </ul>
     </nav>
   </header>
   <main>
     <section id="game-create">
-      <h1>Страница игрока</h1>
+      {% if session['username'] %}
+      <h1>Добро пожаловать {{ session['username'] }}</h1>
+      {% endif %}
       <h3>Создание игры</h3>
       <form action="{{ url_for('creategame')}}" method="post" novalidate="">
         <div id="input-name">

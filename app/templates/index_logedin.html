@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Тайный друг</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css') }}"> 
+  </head>
+  <body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="home">Главная</a></li>
+            <li><img href="../static/src/logo.png"></li>
+            <li><a href="user">Личный кабинет</a></li>
+<!--            тут тоже помагичить-->
+          </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="main-section">
+            <h1>Тайный друг</h1>
+            <div id="right-main">
+              <h3>Организуйте обмен подарками</h3>
+              <p>Играйте в Тайного друга с коллегами и друзьями, всей семьей или просто с интернет знакомыми. </p>
+            </div>
+          </section>
+          <section id="rules-section">
+            <h3>Создать игру <a id="red">быстро</a> и <a class="red">просто</a></h3>
+            <h4><a class="red">3</a> шага и игра создана</h4>
+            <dl>
+              <dt>1.</dt><dd>Задайте как игра будет называться, когда будет вручение подарков.</dd>
+              <dt>2.</dt><dd>Расскажите, как будете получать подарки.</dd>
+              <dt>3.</dt><dd>Расшарьте ссылку для вступления новых игроков.</dd>
+            </dl>
+            <button id="button-create-game" id='send' type="submit" value="create-game">Создать игру</button>
+          </section>
+    </main>
+    <footer>
+        Тут кто создатель всея. Одинаковое на всех страницах.
+    </footer>
+  </body>
+</html>
