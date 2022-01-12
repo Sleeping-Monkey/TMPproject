@@ -1,7 +1,7 @@
 #main-section {
-  height: 67%;
+  height: 68vw;
 
-  background: url(../src/background.jpg) no-repeat;
+  background: url(../src/background.png) no-repeat;
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
   -o-background-size: 100%;  /*Opera 9.6+ */
@@ -9,11 +9,12 @@
 }
 
 h1 {
+  top: 10vw;
 
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 500%;
+  font-size: 7vw;
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -21,9 +22,9 @@ h1 {
 }
 
 #right-main {
-  padding: 10%;
-  width: 30%;
-  right: -50%;
+  width: 39vw;
+  top: 23.3vw;
+  left: 54.4vw;
 
   text-align: center;
 }
@@ -33,26 +34,29 @@ h1 {
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 300%;
+  font-size: 3.75vw;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
 }
 
 #right-main p {
-  text-align: right;
+  top: 5vw;
 
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 200%;
+  font-size: 2.5vw;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
 }
 
 #rules-section {
-  background: url(../src/background_white.png) no-repeat;
+  height: 107vw;
+
+  background: url(../src/background_white.png) ;
+  background-size: 100vw 107vw;
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
   -o-background-size: 100%;  /*Opera 9.6+ */
@@ -60,10 +64,11 @@ h1 {
 }
 
 #rules-section h3 {
+  top: 10vw;
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 400%;
+  font-size: 6vw;
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -71,15 +76,13 @@ h1 {
 }
 
 #rules-section h4 {
-  padding: 10%;
-  width: 80%;
-  padding-bottom: 3%;
+  top: 20vw;
 
   text-align: center;
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 300%;
+  font-size: 5vw;
   letter-spacing: -0.02em;
 
   color: #000000;
@@ -89,8 +92,9 @@ dl {
   display: grid;
   grid-template-columns: max-content auto;
 
-  width: 35%;
-  left: 30%;
+  width: 60vw;
+  left: 22vw;
+  top: 30vw;
 }
 
 dt {
@@ -99,7 +103,7 @@ dt {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 200%;
+  font-size: 4vw;
 
   letter-spacing: -0.02em;
 
@@ -112,7 +116,7 @@ dd {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 200%;
+  font-size: 4vw;
   letter-spacing: -0.02em;
 
   text-align: center;
@@ -122,15 +126,14 @@ dd {
 }
 
 button {
-  width: 30%;
-  margin: 5%;
-  left: 28%;
-  padding: 1%;
+  width: 40vw;
+  left: 30vw;
+  top: 40vw;
 
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 200%;
+  font-size: 5vw;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
