@@ -4,45 +4,66 @@
   position: relative;
   width: 100%;
   height: auto;
-  top: 0px;
   font-family: 'Merriweather', serif;
   font-family: 'Montserrat', sans-serif;  
 }
 
-body {
+html, body {
+  position: absolute;
+  width: 100%;
+  height: 190vw;
   background: #FFFFFF;
 }
 
 header {
+  height: 5vw;
   background-color: #4B4A4A;
 }
 
 nav ul li {
-  margin-right: 10%;
-  margin-left: 10%;
   display: inline;
+  top: 0.6vw;
 }
 
-ul li img {
-  width: 54px;
-  height: 54px;
-  top: 5px;
+nav ul li:first-child {
+  position: absolute;
+  left: 7vw;
 
-  background: url(../src/logo.png);
-  mix-blend-mode: normal;
-  border-radius: 256px;
-} 
+  width: 30vw;
+  text-align: left;
+}
+
+nav ul li:last-child {
+  position: absolute;
+  right: 7vw;
+  
+  width: 30vw;
+  text-align: right;
+}
 
 ul li a {
+  text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 200%;
-  top: -15px;
-  text-align: center;
+  font-size: 3vw;
   letter-spacing: -0.02em;
 
   color: #ECEBEC;
 }
 
+nav img {
+  width: 5vw;
+  height: 5vw;
+  left: 45vw;
+/*  top: -3.6vw;*/
+
+/*  background: url(../src/logo.png);
+  mix-blend-mode: normal;*/
+  border-radius: 20vw;
+}
+
 footer {
+  position: absolute;
+  height: 10vw;
+  bottom: 0;
   background: #000000;
 }
