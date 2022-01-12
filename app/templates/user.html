@@ -44,7 +44,7 @@
         <li><a href="id3">Имя игры3</a></li>
         <li><a href="idn">...</a></li>
       </ul>
-      <form action="{{ url_for('joingame')}}" method="post" novalidate="">
+      <form action="{{ url_for('game')}}" method="post" novalidate="">
         <p>Введите идентификатор игры</p>
         <input id="game-id" name="gameid" placeholder="gameid" required="required" type="text">
         <input id="button-join" type="submit" value="Присоединиться к игре">
