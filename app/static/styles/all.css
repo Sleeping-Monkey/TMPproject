@@ -22,24 +22,29 @@ header {
 
 nav ul li {
   display: inline;
+  top: 0.6vw;
 }
 
 nav ul li:first-child {
-  margin-left: 5vw;
-  margin-right: 24vw;
+  position: absolute;
+  left: 7vw;
+
+  width: 30vw;
+  text-align: left;
 }
 
 nav ul li:last-child {
-  margin-right: 4vw;
-  margin-left: 24vw;
+  position: absolute;
+  right: 7vw;
+  
+  width: 30vw;
+  text-align: right;
 }
 
 ul li a {
   text-decoration: none;
-  top: 0.3vw;
   font-family: 'Montserrat', sans-serif;
   font-size: 3vw;
-  text-align: center;
   letter-spacing: -0.02em;
 
   color: #ECEBEC;
@@ -49,7 +54,7 @@ nav img {
   width: 5vw;
   height: 5vw;
   left: 45vw;
-  top: -3.6vw;
+/*  top: -3.6vw;*/
 
 /*  background: url(../src/logo.png);
   mix-blend-mode: normal;*/
