@@ -8,19 +8,19 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="home">Главная</a></li>
-        <li><img href="../static/src/logo.png"></li>
-        <li><a id="show-login">Выход</a></li>
-      </ul>
-    </nav>
-  </header>
+        <nav>
+          <ul>
+            <li><a href="home">Главная</a></li>
+            <li><a href='user'>Личный кабинет</a></li>
+          </ul>
+	  <img src="{{url_for('static', filename='/src/logo.png')}}"ref="../static/src/logo.png">
+        </nav>
+    </header>
   <main>
     <section id="first">
-      <h2>Страница игры</h2>
+      <h2>Страница игры(!!! Сюда добавить имя игры)</h2>
       <p>Список участников</p>
-      <ul>
+      <ul><!-- !!!В этом списке участники из базы-->
         <li><a href="userid">Имя участника 1</a></li>
         <li><a href="userid">Имя участника 2</a></li>
         <li><a href="userid">Имя участника 3</a></li>
@@ -28,18 +28,12 @@
       </ul>
       <table>
         <tr>
-          <td class="table-name">Название игры</td><td class="table-name">Вручение подарков состоится</td>
+          <td class="table-name">Вручение подарков состоится</td>
+	  <td class="table-value">!!!Дата из базы</td>
         </tr>
         <tr>
-          <td class="table-value">Подтягивается из базы</td>
-          <td class="table-value">Подтягивается из базы</td>
-        </tr>
-        <tr></tr>
-        <tr>
-          <td class="table-name">Ты даришь подарок</td>
-        </tr>
-        <tr>
-          <td class="table-value">Появится, когда все участники добавятся =)</td>
+          <td class="table-name">Вы дарите подарок</td>
+          <td class="table-value">!!! Имя(лучше ссылка) из базы</td>
         </tr>
       </table>
     </section>

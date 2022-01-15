@@ -1,10 +1,14 @@
-#first {  
-  position: absolute;
-  width: 1280px;
-  height: 860px;
-  left: 0px;
-  top: 52px;
-  background: url(../src/background_black.jpg) no-repeat;
+html, body {
+  height: 100vh;
+}
+
+footer {
+  height: 10vh;
+}
+
+#first, #final, #second-section {  
+  height: 100%;
+  background: url(../src/background_black.jpg);
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
   -o-background-size: 100%;  /*Opera 9.6+ */
@@ -12,18 +16,11 @@
 }
 
 h2 {
-  position: absolute;
-  width: 391px;
-  height: 60px;
-  left: 449px;
-  top: 65px;
-
+  width: 90vw;
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
-  line-height: 60px;
-  display: flex;
+  font-size: 10vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -32,18 +29,13 @@ h2 {
 }
 
 #first p {
-  position: absolute;
-  width: 335.17px;
-  height: 28.21px;
-  left: 475.61px;
-  top: 160px;
+  width: 50vw;
+  top: 5vh;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 30px;
-  display: flex;
+  font-size: 5vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -52,39 +44,49 @@ h2 {
 }
 
 #first ul {
-  position: absolute;
-  width: 486px;
-  height: 267.04px;
-  left: 399px;
-  top: 207.96px;
+  width: 30vw;
+  height: 40vh;
+  left: 10vw;
+  top: 7vh;
 
   background: #FFFFFF;
 }
 
 #first ul li {
-  margin: 0;
-  display:none;
+  width: 98%;
+  margin: 1%;
+
+  font-family: Merriweather;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3vh;
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  text-decoration: none;
+  list-style: none;
+  color: #000000;
+
+ /* display:none;*/
 }
 
 table {
-  position: absolute;
-  width: 890px;
-  height: 220px;
-  left: 196px;
-  top: 534px;
+  width: 50vw;
+  top: -30vh;
+  left: 45vw;
 }
 
 tr {
-  height: 44px;
+  height: 5vh;
 }
 
 .table-name {
-  width: 445px;
+  width: 50%;
+
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 3vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -93,79 +95,49 @@ tr {
 }
 
 .table-value {
-  width: 445px;
-  height: 40px;
+  width: 50%;
+  height: 5vh;
 
   background: #FFFFFF;
 }
 
 #gift-given {
-  position: absolute;
-  width: 367px;
-  height: 201px;
-  right: 0px;
-  top: 60px;
+  width: 40vw;
+  height: 30vh;
+  top: -25vh;
+  left: 50vw;
 
-  background: url(../src/background_white.png);
+/*  background: url(../src/background_white.png);*/
 }
 
 #gift-given h5 {
-  position: absolute;
-  width: 287px;
-  height: 63.37px;
-  left: 40px;
-  top: 35.2px;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 5vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #000000;
+  color: #FFFFFF;
 }
 
 #gift-given button {
-  position: absolute;
-  width: 145px;
-  height: 43.25px;
-  top: 125px;
+  width: 40%;
+  top: 10%;
+  left: 10%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 5vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
 
   color: #000000;
   background: #D20000;
-}
-
-#button-yes {
-  left: 27px;
-}
-
-#button-no {
-  left: 193px;
-}
-
-#second-section {
-  position: absolute;
-  width: 1280px;
-  height: 860px;
-  left: 0px;
-  top: 52px;
-  background: url(../src/background_black.jpg) no-repeat;
-  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
-  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%;  /*Opera 9.6+ */
-  background-size: 100%;  /*Современные браузеры */
 }
 
 #second-section h2 {
@@ -302,19 +274,6 @@ tr {
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
-}
-
-#final  {  
-  position: absolute;
-  width: 1280px;
-  height: 860px;
-  left: 0px;
-  top: 52px;
-  background: url(../src/background_white.png) no-repeat;
-  -moz-background-size: 100%;  /*Firefox 3.6+*/ 
-  -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%;  /*Opera 9.6+ */
-  background-size: 100%;  /*Современные браузеры */
 }
 
 #final h2 {
