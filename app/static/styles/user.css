@@ -1,6 +1,6 @@
 #game-create {
-  height: 68vw;
-  background: url(../src/background_black.jpg) no-repeat;
+  height: 87.5vw;
+  background: url(../src/background_black.jpg);
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
   -o-background-size: 100%;  /*Opera 9.6+ */
@@ -21,7 +21,7 @@
 }
 
 #game-create h3 {
-  top: 4vw;
+  top: 6vw;
 
   font-family: Merriweather;
   font-style: normal;
@@ -35,7 +35,7 @@
 }
 
 #game-create form p {
-  top: 4vw;
+  top: 7vw;
 
   font-family: Merriweather;
   font-style: normal;
@@ -51,7 +51,7 @@
 form input {
   width: 40vw;
   height: 4vw;
-  top: 4vw;
+  top: 7vw;
   left: 30vw;
 
   font-family: Merriweather;
@@ -85,7 +85,7 @@ form .button-create {
 }
 
 #game-list {
-  height: 107vw;
+  height: 87.5vw;
   background: url(../src/background_white.png);
 }
 
@@ -124,6 +124,7 @@ form .button-create {
 }
 
 #game-list form p {
+  width: 55vw;
   top: -55vw;
   left: 3vw; 
 
