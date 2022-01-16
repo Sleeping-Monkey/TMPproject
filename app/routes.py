@@ -4,6 +4,8 @@ from flask import request
 from app import app
 from app.db_interaction import log_user
 from app.db_interaction import add_user
+from app.db_interaction import create_game
+from app.db_interaction import connect_game
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -11,11 +13,14 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route('/')
 @app.route('/home', methods=["GET", "POST"])
 def home():
-    try:
-        if session['username'] != None:
-            return flask.render_template('index_logedin.html')
-    except KeyError:
-        return flask.render_template('index.html')
+    # try:
+    #     if session['username'] != None:
+    #         session["username"] = ""
+    #         return flask.render_template('index.html')
+    # except KeyError:
+
+    # print(session['username'])
+    return flask.render_template('index.html')
 
 
 @app.route('/user', methods=["GET", "POST"])
@@ -45,11 +50,16 @@ def register():
 
 @app.route('/creategame', methods=["POST"])
 def creategame():
+    game_name, player_count, creator_name = request.form['name'], request.form['count'], session['username']
+    create_game(game_name, player_count, creator_name)
     return request.form['name']
 
 
 @app.route('/game', methods=["GET", "POST"])
 def game():
+    connect_game(request.form['gameid'], session['username'])
+    data = ()
+    # данные для отображения и разделения на этапы
     return flask.render_template('game.html')
 
 

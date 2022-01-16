@@ -14,7 +14,11 @@
         <nav>
           <ul>
             <li><a href="home">Главная</a></li>
+            {% if session['username'] %}
+            <li><a href="user">Личный кабинет</a></li>
+            {% else %}
             <li><a id='login-click'>Вход | Регистрация</a></li>
+            {% endif %}
           </ul>
 	  <img src="{{url_for('static', filename='/src/logo.png')}}"ref="../static/src/logo.png">
         </nav>
@@ -36,6 +40,7 @@
               <dt>3.</dt><dd>Расшарьте ссылку для вступления новых игроков.</dd>
             </dl>
             <button id="button-create-game" id='send' type="submit" value="create-game">Создать игру</button>
+
           </section>
           <section id="login-section">
             <h3>Вход</h3>
