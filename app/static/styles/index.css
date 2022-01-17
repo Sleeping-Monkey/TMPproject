@@ -1,5 +1,5 @@
 #main-section {
-  height: 68vw;
+  height: 66vw;
 
   background: url(../src/background.png) no-repeat;
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
@@ -53,7 +53,7 @@ h1 {
 }
 
 #rules-section {
-  height: 107vw;
+  height: 109vw;
 
   background: url(../src/background_white.png) ;
   background-size: 100vw 107vw;
