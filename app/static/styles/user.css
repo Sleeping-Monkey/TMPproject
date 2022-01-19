@@ -1,5 +1,13 @@
+html, body {
+  height: 100vh;
+}
+
+footer {
+  height: 10vh;
+}
+
 #game-create {
-  height: 87.5vw;
+  height: 80vh;
   background: url(../src/background_black.jpg);
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
@@ -8,11 +16,11 @@
 }
 
 #game-create h1 {
-  top: 2vw;
+  top: 2vh;
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 8vw;
+  font-size: 10vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -21,26 +29,39 @@
 }
 
 #game-create h3 {
-  top: 6vw;
+  height: 8vh;
+  width: 50vw;
+  left: 50vw;
+  top: 2vh;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 7vw;
+  font-size: 7vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
+}
+
+#game-create form {
+  width: 30vw;
+  height: 60vh;
+  left: 60vw;
+  top: 4vh;
 }
 
 #game-create form p {
-  top: 7vw;
+  position: static;
+  height: 10%;
+  width: 100%;
+  top: 7vh;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 4vw;
+  font-size: 4vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -48,16 +69,16 @@
   color: #FFFFFF;
 }
 
-form input {
-  width: 40vw;
-  height: 4vw;
-  top: 7vw;
-  left: 30vw;
+#game-create form input {
+  position: visible;
+  width: 60%;
+  height: 10%;
+  left: 20%;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 4vw;
+  font-size: 4vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -66,16 +87,17 @@ form input {
   background: #FFFFFF;
 }
 
-form .button-create {
-  width: 35vw;
-  height: 7vw;
-  left: -8vw;
-  top: 15vw;
+#game-create form .button-create {
+  position: visible;
+  width: 70%;
+  height: 15%;
+  left: 15%;
+  top: 5%;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vw;
+  font-size: 5vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -85,62 +107,87 @@ form .button-create {
 }
 
 #game-list {
-  height: 87.5vw;
-  background: url(../src/background_white.png);
+  position: fixed;
+  bottom: 13vh;
+  left: 0;
+  height: 60vh;
+  width: 40vw;
+  /*background: url(../src/background_white.png);*/
 }
 
 #game-list h5 {
-  width: 90vw;
+  position: static;
+  width: 100%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vw;
-  text-align: right;
+  font-size: 5vh;
+  text-align: center;
   letter-spacing: -0.02em;
 
-  color: #000000;
+  color: #FFFFFF;
 }
 
 #game-list ul {
-  width: 35vw;
-  height: 50vw;
-  left: 60vw;
+  position: relative;
+  width: 80%;
+  height: 50%;
+  left: 10%;
 
-  color: white;
-  background-color: #37383C;
+  list-style: none;
+  overflow: auto;
+  /*background-color: #37383C;*/
 }
 
 #game-list ul li {
+  position: static;
+  width: 90%;
   margin: 1%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
-  font-size: 3vw;
+  font-size: 5vh;
   text-align: center;
   letter-spacing: -0.02em;
+  
+  color: #000000;
 /*  display:none;*/
 }
 
+#game-list form {
+  position: relative;
+  height: 30%;
+  width: 80%;
+  top: 5%;
+  left: 10%;
+
+  border: 2px solid;
+}
+
 #game-list form p {
-  width: 55vw;
-  top: -55vw;
-  left: 3vw; 
+  position: static;
+  width: 100%;
+  height: 20%;
+  top: 10%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 4vw;
-  text-align: left;
+  font-size: 4vh;
+  text-align: center;
   letter-spacing: -0.02em;
 
   color: #000000;
 }
 
 #game-id {
-  top: -53vw;
-  left: 9vw;
+  position: relative;
+  width: 50%;
+  height: 20%;
+  left: 25%;
+  top: 10%;
 
   color: #000000;
   background: #FFFFFF;
@@ -148,14 +195,16 @@ form .button-create {
 }
 
 #button-join {
-  top: -50vw;
-  left: 9vw;
+  position: relative;
+  width: 60%;
+  height: 30%;
+  top: 15%;
+  left: 20%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 3vw;
-  display: flex;
+  font-size: 3vh;
   text-align: center;
   letter-spacing: -0.02em;
 
