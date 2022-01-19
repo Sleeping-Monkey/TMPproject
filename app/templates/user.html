@@ -42,6 +42,9 @@
       </ul>
         <form action="{{ url_for('game')}}" method="post" novalidate="">
         <p>Введите идентификатор игры</p>
+          {% if data == 0 %}
+          <p>В игре нет свободного места</p>
+          {% endif %}
         <input id="game-id" name="gameid" placeholder="gameid" required="required" type="text">
         <input id="button-join" type="submit" value="Присоединиться к игре">
       </form>
