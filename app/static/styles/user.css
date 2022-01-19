@@ -3,11 +3,11 @@ html, body {
 }
 
 footer {
-  height: 10vh;
+  height: 5vh;
 }
 
 #game-create {
-  height: 80vh;
+  height: 90vh;
   background: url(../src/background_black.jpg);
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
@@ -16,7 +16,7 @@ footer {
 }
 
 #game-create h1 {
-  top: 2vh;
+  top: 2%;
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
@@ -29,10 +29,10 @@ footer {
 }
 
 #game-create h3 {
-  height: 8vh;
-  width: 50vw;
-  left: 50vw;
-  top: 2vh;
+  height: 8%;
+  width: 50%;
+  left: 50%;
+  top: 5%;
 
   font-family: Merriweather;
   font-style: normal;
@@ -46,17 +46,17 @@ footer {
 }
 
 #game-create form {
-  width: 30vw;
-  height: 60vh;
-  left: 60vw;
-  top: 4vh;
+  width: 30%;
+  height: 60%;
+  left: 60%;
+  top: 10%;
 }
 
 #game-create form p {
   position: static;
   height: 10%;
   width: 100%;
-  top: 7vh;
+  top: 7%;
 
   font-family: Merriweather;
   font-style: normal;
@@ -108,10 +108,10 @@ footer {
 
 #game-list {
   position: fixed;
-  bottom: 13vh;
+  bottom: 13%;
   left: 0;
-  height: 60vh;
-  width: 40vw;
+  height: 60%;
+  width: 40%;
   /*background: url(../src/background_white.png);*/
 }
 

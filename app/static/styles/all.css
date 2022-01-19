@@ -11,18 +11,18 @@
 html, body {
   position: absolute;
   width: 100%;
-  height: 190vw;
+  height: 210vh;
   background: #FFFFFF;
 }
 
 header {
-  height: 5vw;
+  height: 5vh;
   background-color: #4B4A4A;
 }
 
 nav ul li {
   display: inline;
-  top: 0.6vw;
+  top: 0.6vh;
 }
 
 nav ul li:first-child {
@@ -44,26 +44,26 @@ nav ul li:last-child {
 ul li a {
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 3vw;
+  font-size: 3vh;
   letter-spacing: -0.02em;
 
   color: #ECEBEC;
 }
 
 nav img {
-  width: 5vw;
-  height: 5vw;
+  width: 5vh;
+  height: 5vh;
   left: 45vw;
 /*  top: -3.6vw;*/
 
 /*  background: url(../src/logo.png);
   mix-blend-mode: normal;*/
-  border-radius: 20vw;
+  border-radius: 20vh;
 }
 
 footer {
   position: absolute;
-  height: 10vw;
+  height: 5vh;
   bottom: 0;
   background: #000000;
 }

@@ -18,7 +18,7 @@
     </header>
   <main>
     <section id="first">
-      <h2>Страница игры {{ data[0] }}</h2>
+      <h2>Игра {{ data[0] }}</h2>
       <p>Список участников</p>
       <ul><!-- !!!В этом списке участники из базы-->
         <li>Имя участника 1</li>
@@ -26,24 +26,20 @@
         <li>Имя участника 3</li>
         <li>...</li>
       </ul>
-      <table>
-        <tr>
-          <td class="table-name">Вручение подарков состоится</td>
-	  <td class="table-value">!!!Дата из базы</td>
-        </tr>
-        <tr>
-          <td class="table-name">Вы дарите подарок</td>
-          <td class="table-value">!!! Имя(лучше ссылка) из базы</td>
-        </tr>
-      </table>
     </section>
     <section id="gift-given">
+      <table>
+        <tr>
+          <td class="table-name">Вы дарите подарок</td>
+          <td class="table-value">!!! Имя из базы</td>
+        </tr>
+      </table>
       <h5>Вы сделали подарок?</h5>
       <button id="button-yes">Да</button>
       <button id="button-no">Нет</button>
     </section>
     <section id="second-section">
-      <h2>Страница игры {{ data[0] }}</h2>
+      <h2>Игра {{ data[0] }}</h2>
       <h5>Оцените игру</h5>  
       <form>
 	<p>Оцените подарок, который вам подарили от 0 до 10:</p>
@@ -53,7 +49,7 @@
       </form>
     </section>
     <section id="final">
-      <h2>Страница игры(!!! Сюда добавить имя игры)</h2>
+      <h2>Игра {{ data[0] }}</h2>
       <h5>Игра завершена</h5>
       <table>
         <tr>

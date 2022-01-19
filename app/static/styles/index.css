@@ -1,5 +1,5 @@
 #main-section {
-  height: 66vw;
+  height: 100vh;
 
   background: url(../src/background.png) no-repeat;
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
@@ -9,12 +9,12 @@
 }
 
 h1 {
-  top: 10vw;
+  top: 5%;
 
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 7vw;
+  font-size: 15vh;
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -22,9 +22,10 @@ h1 {
 }
 
 #right-main {
-  width: 39vw;
-  top: 23.3vw;
-  left: 54.4vw;
+  width: 40%;
+  height: 60%;
+  top: 15%;
+  left: 55%;
 
   text-align: center;
 }
@@ -34,26 +35,26 @@ h1 {
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 3.75vw;
+  font-size: 7vh;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
 }
 
 #right-main p {
-  top: 5vw;
+  top: 10%;
 
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.5vw;
+  font-size: 5vh;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
 }
 
 #rules-section {
-  height: 109vw;
+  height: 100vh;
 
   background: url(../src/background_white.png) ;
   background-size: 100vw 107vw;
@@ -64,11 +65,12 @@ h1 {
 }
 
 #rules-section h3 {
-  top: 10vw;
+  top: 5%;
+
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 6vw;
+  font-size: 10vh;
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -76,13 +78,13 @@ h1 {
 }
 
 #rules-section h4 {
-  top: 20vw;
+  top: 8%;
 
   text-align: center;
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vw;
+  font-size: 7vh;
   letter-spacing: -0.02em;
 
   color: #000000;
@@ -93,8 +95,9 @@ dl {
   grid-template-columns: max-content auto;
 
   width: 60vw;
+  height: 60vh;
   left: 22vw;
-  top: 30vw;
+  top: 8%;
 }
 
 dt {
@@ -103,7 +106,7 @@ dt {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 4vw;
+  font-size: 7vh;
 
   letter-spacing: -0.02em;
 
@@ -116,7 +119,7 @@ dd {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 4vw;
+  font-size: 7vh;
   letter-spacing: -0.02em;
 
   text-align: center;
@@ -126,14 +129,14 @@ dd {
 }
 
 button {
-  width: 40vw;
-  left: 30vw;
-  top: 40vw;
+  width: 33vw;
+  left: 35vw;
+  top: 10%;
 
   font-family: 'Merriweather', serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vw;
+  font-size: 5vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;

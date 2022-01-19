@@ -3,11 +3,11 @@ html, body {
 }
 
 footer {
-  height: 10vh;
+  height: 5vh;
 }
 
 #first, #final, #second-section {  
-  height: 80vh;
+  height: 90vh;
   background: url(../src/background_black.jpg);
   -moz-background-size: 100%;  /*Firefox 3.6+*/ 
   -webkit-background-size: 100%;  /*Safari 3.1+ и Chrome 4.0+ */
@@ -16,8 +16,8 @@ footer {
 }
 
 h2 {
-  width: 90vw;
-  left: 3vw;
+  width: 90%;
+  left: 3%;
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
@@ -30,13 +30,13 @@ h2 {
 }
 
 #first p {
-  width: 40vw;
-  top: 5vh;
+  width: 40%;
+  top: 5%;
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vh;
+  font-size: 7vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -45,10 +45,11 @@ h2 {
 }
 
 #first ul {
-  width: 30vw;
-  height: 40vh;
-  left: 5vw;
-  top: 7vh;
+  width: 30%;
+  height: 65%;
+  left: 5%;
+  top: 7%;
+
   overflow: auto;
 
   background: #FFFFFF;
@@ -61,10 +62,11 @@ h2 {
   font-family: Merriweather;
   font-style: normal;
   font-weight: normal;
-  font-size: 3vh;
+  font-size: 5vh;
   text-align: center;
   letter-spacing: -0.02em;
 
+  overflow: auto;
   text-decoration: none;
   list-style: none;
   color: #000000;
@@ -72,53 +74,54 @@ h2 {
  /* display:none;*/
 }
 
-table {
+#gift-given {
+  position: fixed;
   width: 50vw;
-  top: -40vh;
-  left: 45vw;
+  height: 60vh;
+  bottom: 15vh;
+  left: 40vw;
 }
 
-tr {
-  height: 5vh;
+#gift-given table {
+  width: 100%;
+  height: 20%;
+  top: 0%;
+  left: 0%;
 }
 
-.table-name {
-  width: 50%;
+#gift-given table tr td {
 
   font-family: Merriweather;
   font-style: normal;
   font-weight: bold;
-  font-size: 3vh;
+  font-size: 6vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
+}
+
+.table-name {
+  width: 50%;
 
   color: #FFFFFF;
 }
 
 .table-value {
   width: 50%;
-  height: 5vh;
+  height: 7vh;
 
+  overflow: auto;
+  color: #000000;
   background: #FFFFFF;
 }
 
-#gift-given {
-  position: fixed;
-  width: 40vw;
-  height: 30vh;
-  bottom: 15vh;
-  left: 50vw;
-
-/*  background: url(../src/background_white.png);*/
-}
-
 #gift-given h5 {
+  top: 20%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vh;
+  font-size: 10vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -128,13 +131,13 @@ tr {
 
 #gift-given button {
   width: 40%;
-  top: 10%;
+  top: 25%;
   left: 10%;
 
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
-  font-size: 5vh;
+  font-size: 8vh;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
@@ -144,10 +147,10 @@ tr {
 }
 
 #second-section h5 {
-  height: 8vh;
-  width: 50vw;
-  left: 25vw;
-  top: 7vh;
+  height: 8%;
+  width: 50%;
+  left: 25%;
+  top: 7%;
 
   font-family: Merriweather;
   font-style: normal;
@@ -162,10 +165,10 @@ tr {
 
 #second-section form {
   position: fixed;
-  width: 60vw;
-  height: 35vh;
-  left: 23vw;
-  bottom: 15vh;
+  width: 60%;
+  height: 35%;
+  left: 23%;
+  bottom: 15%;
 }
 
 #second-section form p {
@@ -223,10 +226,10 @@ tr {
 }
 
 #final h5 {
-  width: 60vw;
-  height: 8vh;
-  left: 20vw;
-  top: 0vh;
+  width: 60%;
+  height: 8%;
+  left: 20%;
+  top: 10%;
   
   font-family: Merriweather;
   font-style: normal;
@@ -236,18 +239,18 @@ tr {
   text-align: center;
   letter-spacing: -0.02em;
 
-  color: #000000;
+  color: #FFFFFF;
 }
 
 #final table {
   position: relative;
-  width: 60vw;
-  height: 40vh;
-  left: 20vw;
-  top: 5vh;
+  width: 80%;
+  height: 40%;
+  left: 10%;
+  top: 20%;
   
   border-collapse: separate;
-  border-spacing: 1vw;
+  border-spacing: 5vh;
 }
 
 #final table tr {
@@ -269,7 +272,7 @@ tr {
 
 #final table tr .table-name {
   position: static;
-  color: #000000;
+  color: #FFFFFF;
 
 }
 
@@ -277,26 +280,6 @@ tr {
   position: static;
 }
 
-#final button {
-  position: static;
-  width: 178px;
-  height: 52px;
-  left: 551px;
-  top: 662px;
-
-  font-family: Merriweather;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 30px;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-  background: #E81120;
-}
-
-#final, #gift-given, #second-section {
+#second-section, #gift-given, #final {
   display: none;
 }
