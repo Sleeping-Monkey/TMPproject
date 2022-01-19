@@ -100,7 +100,7 @@ def presents(game_name="bebra"):
     data = (game_name,)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    print(data)
+    # print(data)
 #     return data
 
 

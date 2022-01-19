@@ -10,20 +10,14 @@ from app.db_interaction import get_from_db_one_elem
 from app.db_interaction import is_space_to_connect
 from app.db_interaction import presents
 from app.db_interaction import connected
+
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route('/')
 @app.route('/home', methods=["GET", "POST"])
 def home():
-    presents()
-    # try:
-    #     if session['username'] != None:
-    #         session["username"] = ""
-    #         return flask.render_template('index.html')
-    # except KeyError:
-
-    # print(session['username'])
+    # presents()
     return flask.render_template('index.html')
 
 
@@ -31,8 +25,8 @@ def home():
 def user():
     if request.method == "GET":
         try:
-             if session['username'] != None:
-                 return flask.render_template('user.html')
+            if session['username'] != None:
+                return flask.render_template('user.html')
         except KeyError:
             return "Please log in"
     elif request.method == "POST":
@@ -65,26 +59,23 @@ def creategame():
 
 @app.route('/game', methods=["GET", "POST"])
 def game():
-    if connected(session['username'], request.form['gameid']):
-        name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-        data = (name,)
+    data = ()
+    if not connected(session['username'], request.form['gameid']):
         # данные для отображения и разделения на этапы
-        return flask.render_template('game.html', data=data)
-    elif is_space_to_connect(request.form['gameid']):
-        connect_game(request.form['gameid'], session['username'])
-        name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-        data = (name,)
-        # данные для отображения и разделения на этапы
-        return flask.render_template('game.html', data=data)
-    else:
-        data = 0
-        return flask.render_template('user.html', data=data)
+        if is_space_to_connect(request.form['gameid']):
+            connect_game(request.form['gameid'], session['username'])
+            # данные для отображения и разделения на этапы
+        else:
+            data = 0
+            return flask.render_template('user.html', data=data)
+    name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
+    data = (name,)
+    return flask.render_template('game.html', data=data)
 
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
     session.pop("username", None)
     return flask.render_template('index.html')
-
 
 # @app.route('discon')
