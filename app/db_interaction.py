@@ -54,7 +54,7 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
     if a == "-1":
         name = get_from_db_one_elem(search_by_what)
         data = (name,)
-    # print(data)
+    print(data)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
     #print("!!!DATA!!!", file=stderr)

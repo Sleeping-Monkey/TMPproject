@@ -14,7 +14,7 @@ from app.db_interaction import stage_change
 from app.db_interaction import is_gave
 from app.db_interaction import pr_gave
 from app.db_interaction import set_grades
-from app.game_logic import appoint_recipient
+# from app.game_logic import appoint_recipient
 
 from sys import stderr
 
@@ -65,36 +65,47 @@ def creategame():
     create_game(game_name, player_count, creator_name)
     connect_game(game_name, session['username'])
     # name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-    data = (game_name,)
+    data = []
     # данные для отображения и разделения на этапы
-    return flask.render_template('game.html', data=data)
+    games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+    for i in range(len(games)):
+        data.append(games[i][1])
+    return flask.render_template('user.html', data=data)
     # return request.form['name']
 
 
 @app.route('/game', methods=["GET", "POST"])
-def game():#конекта к разным играм нет, потому что нельзя из базы брать один элемент
-#, когда пользователь может создавать много...
-    game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-    if request.args.get("a") == "1":
-        pr_gave(session['username'], game_name)
-    elif request.form['gameid']: #заглушка
+def game():
+    gm_nm = ""
+    if request.method == "POST":
         game_name = request.form['gameid']
-    stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
-    data = [game_name, stage]
+    else:
+#конекта к разным играм нет, потому что нельзя из базы брать один элемент
+#, когда пользователь может создавать много...
+        game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
+    print(game_name, session['username'])
     if not connected(session['username'], game_name):
         if is_space_to_connect(game_name):
             connect_game(game_name, session['username'])
         else:
             data = 0
             return flask.render_template('user.html', data=data)
+    if request.args.get("a") == "1":
+        pr_gave(session['username'], game_name)
+    stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
+    data = [game_name, stage]
+    if request.method == "POST":
+        gm_nm = request.form["gameid"]
+        data = [gm_nm, get_from_db_one_elem(gm_nm, "stage", "game_info", "game_name")]
+
     if stage == 0 and not is_space_to_connect(game_name):
         #тут, когда смена состояний, должно в базу записываться, кто кому дарит
         #, для этого нужно вытащить из базы всех игроков в игре и бахнуть пачкой в функцию распределения
-        #appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name")) <-- 
+        #appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name")) <--
         #к этим данным нужен рейтинг каждого игрока допом.
         stage = stage_change(stage, game_name)
         data.pop(-1)
-        data.append(stage) 
+        data.append(stage)
     elif stage == 1 and is_gave(game_name):
         stage = stage_change(stage, game_name)
         data.pop(-1)
@@ -107,8 +118,12 @@ def game():#конекта к разным играм нет, потому чт�
             data.append(stage)
     elif stage == 3:
         print("Тяу")
-        # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)   
-    player_list = get_from_db_one_elem(game_name, "*", "player_list", "game_name")
+        # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)
+
+    if gm_nm != "":
+        player_list = get_from_db_one_elem(gm_nm, "*", "player_list", "game_name")
+    else:
+        player_list = get_from_db_one_elem(game_name, "*", "player_list", "game_name")
     players = []
     data.append(get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id", "player_list",
                                                           "player_id", "-1"), "login", "user", "id"))
