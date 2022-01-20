@@ -1,7 +1,7 @@
 import sqlite3
 
 from sys import stderr
-
+import random
 
 def add_user(login, passwd):
     conn = sqlite3.connect("database.db")
@@ -136,6 +136,34 @@ def presents(game_name="bebra"):
     data = (game_name,)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
+    if len(data) == 1:
+        write_to_bd([data[0][0], data[0][0]], game_name) # Заглушка моя, но вообще таких ебланов надо банить 
+        return
+    result = [] # [кому]
+    id_data = []
+    for i in range(len(data)):
+        id_data.append(i)
+    counter = 0
+    best_dist = -1
+    while counter < len(id_data) // 2:
+        random.shuffle(id_data)
+        dist = 0
+        flag = 1
+        for i in range(len(data)):
+            if data[id_data[i]][0] == data[i][0]:
+                flag = 0
+                break
+            elif data[id_data[i]][1] > data[i][1]:
+                dist += int(data[id_data[i]][1]) - int(data[i][1])
+            else:
+                dist += int(data[i][1]) - int(data[id_data[i]][1])
+        if flag == 1:
+            counter += 1
+            if best_dist == -1 or best_dist > dist:
+                best_dist = dist
+                result = id_data
+    for i in range(len(data)):
+        write_to_bd([data[result[i]][0], data[i][0]], game_name)
     # print(data)
 #     return data
 
