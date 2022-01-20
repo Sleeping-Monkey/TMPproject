@@ -279,7 +279,3 @@ h2 {
 #final table tr .table-value {
   position: static;
 }
-
-#second-section, #gift-given, #final {
-  display: none;
-}

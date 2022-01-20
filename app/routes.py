@@ -10,7 +10,10 @@ from app.db_interaction import get_from_db_one_elem
 from app.db_interaction import is_space_to_connect
 from app.db_interaction import presents
 from app.db_interaction import connected
-
+from app.db_interaction import stage_change
+from app.db_interaction import is_gave
+from app.db_interaction import pr_gave
+from app.db_interaction import set_grades
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
@@ -23,17 +26,24 @@ def home():
 
 @app.route('/user', methods=["GET", "POST"])
 def user():
+    data = []
     if request.method == "GET":
         try:
             if session['username'] != None:
-                return flask.render_template('user.html')
+                games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+                for i in range(len(games)):
+                    data.append(games[i][1])
+                return flask.render_template('user.html', data=data)
         except KeyError:
             return "Please log in"
     elif request.method == "POST":
         login, passwd = request.form['name'], request.form['password']
         if log_user(login, passwd):
             session["username"] = login
-            return flask.render_template('user.html')
+            games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+            for i in range(len(games)):
+                data.append(games[i][1])
+            return flask.render_template('user.html', data=data)
         else:
             return "Wrong login or password"
 
@@ -59,18 +69,44 @@ def creategame():
 
 @app.route('/game', methods=["GET", "POST"])
 def game():
-    data = ()
-    if not connected(session['username'], request.form['gameid']):
-        # данные для отображения и разделения на этапы
-        if is_space_to_connect(request.form['gameid']):
-            connect_game(request.form['gameid'], session['username'])
-            # данные для отображения и разделения на этапы
+    game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
+    if request.args.get("a") == "1":
+        pr_gave(session['username'], game_name)
+    stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
+    data = [game_name, stage]
+    if not connected(session['username'], game_name):
+        if is_space_to_connect(game_name):
+            connect_game(game_name, session['username'])
         else:
             data = 0
             return flask.render_template('user.html', data=data)
-    name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-    data = (name,)
-    return flask.render_template('game.html', data=data)
+    if stage == 0 and not is_space_to_connect(game_name):
+        stage = stage_change(stage, game_name)
+        data.pop(-1)
+        data.append(stage)
+    elif stage == 1 and is_gave(game_name):
+        stage = stage_change(stage, game_name)
+        data.pop(-1)
+        data.append(stage)
+    elif stage == 2:
+        if get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1"):
+            stage = stage_change(stage, game_name)
+            data.pop(-1)
+            data.append(stage)
+    player_list = get_from_db_one_elem(game_name, "*", "player_list", "game_name")
+    players = []
+    data.append(get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id", "player_list",
+                                                          "player_id", "-1"), "login", "user", "id"))
+    for i in range(len(player_list)):
+        players.append(get_from_db_one_elem(player_list[i][2], "login", "user", "ID"))
+    return flask.render_template('game.html', data=data, players=players)
+
+
+@app.route('/set_score', methods=["GET", "POST"])
+def set_score():
+    game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
+    set_grades(session['username'], game_name, request.form['grade'])
+    return game()
 
 
 @app.route('/logout', methods=["GET", "POST"])

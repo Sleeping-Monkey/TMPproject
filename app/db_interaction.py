@@ -44,19 +44,6 @@ def connect_game(game_name, name):
     conn.close()
 
 
-# def id_by_name(name):
-#     conn = sqlite3.connect("database.db")
-#     curs = conn.cursor()
-#     what_to_return = "ID"
-#     table_name = "User"
-#     column = "login"
-#     sql_req = """SELECT """ + what_to_return + """ FROM """ + table_name + """ WHERE """ + column + """ = ?"""
-#     data = (name,)
-#     id = (curs.execute(sql_req, data)).fetchall()
-#     conn.close()
-#     return id[0][0]
-
-
 def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User", column="login", a="0"):
     conn = sqlite3.connect("database.db")
     curs = conn.cursor()
@@ -65,9 +52,13 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
     if a == "-1":
         name = get_from_db_one_elem(search_by_what)
         data = (name,)
+    # print(data)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    return data[0][0]
+    if what_to_return != "*":
+        return data[0][0]
+    else:
+        return data
 
 
 def is_space_to_connect(game_name):
@@ -90,6 +81,47 @@ def connected(player_id, game_name):
         return 0
     else:
         return 1
+
+
+def stage_change(stage, game_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    sql_req = """UPDATE game_info set stage = ? WHERE game_name = ?"""
+    data = (stage+1, game_name)
+    curs.execute(sql_req, data)
+    conn.commit()
+    conn.close()
+    return stage+1
+
+
+def is_gave(game_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    sql_req = """SELECT MIN(is_give) FROM player_list WHERE game_name = ?"""
+    data = (game_name,)
+    data = (curs.execute(sql_req, data)).fetchall()
+    conn.close()
+    return data[0][0]
+
+
+def pr_gave(player, game_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    sql_req = """UPDATE player_list set is_give = 1 WHERE player_id = ? and game_name = ?"""
+    data = (get_from_db_one_elem(player), game_name,)
+    curs.execute(sql_req, data)
+    conn.commit()
+    conn.close()
+
+
+def set_grades(player, game_name, grade):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    sql_req = """UPDATE player_list set score = ? WHERE recipient_id = ? and game_name = ?"""
+    data = (grade, get_from_db_one_elem(player), game_name,)
+    curs.execute(sql_req, data)
+    conn.commit()
+    conn.close()
 
 
 def presents(game_name="bebra"):

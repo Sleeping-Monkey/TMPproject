@@ -17,37 +17,41 @@
         </nav>
     </header>
   <main>
+    {% if data[1] == 0 or data[1] == 1 %}
     <section id="first">
       <h2>Игра {{ data[0] }}</h2>
       <p>Список участников</p>
-      <ul><!-- !!!В этом списке участники из базы-->
-        <li>Имя участника 1</li>
-        <li>Имя участника 2</li>
-        <li>Имя участника 3</li>
-        <li>...</li>
+      <ul>
+        {% for i in players %}
+        <li>{{ i }}</li>
+        {% endfor %}
       </ul>
+      {% endif %}
     </section>
+    {% if data[1] == 1 %}
     <section id="gift-given">
       <table>
         <tr>
           <td class="table-name">Вы дарите подарок</td>
-          <td class="table-value">!!! Имя из базы</td>
+          <td class="table-value">{{ data[2] }}</td>
         </tr>
       </table>
       <h5>Вы сделали подарок?</h5>
-      <button id="button-yes">Да</button>
+      <a href="game?a=1"><button id="button-yes">Да</button></a>
       <button id="button-no">Нет</button>
     </section>
+    {% elif data[1] == 2 %}
     <section id="second-section">
       <h2>Игра {{ data[0] }}</h2>
       <h5>Оцените игру</h5>  
-      <form>
+      <form action="{{ url_for('set_score')}}" method="post" novalidate="">
 	<p>Оцените подарок, который вам подарили от 0 до 10:</p>
         <input name="grade" placeholder="0" required="required" type="number">
         <p>Чтобы узнать, кто сделал вам подарок, нажмите кнопку</p>
         <input class="button-login" type="submit" value="Завершить">  
       </form>
     </section>
+    {% elif data[1] == 3 %}
     <section id="final">
       <h2>Игра {{ data[0] }}</h2>
       <h5>Игра завершена</h5>
@@ -70,6 +74,7 @@
         </tr>
       </table>
     </section>
+  {% endif %}
   </main>
   <footer>
     Тут кто создатель всея. Одинаковое на всех страницах.
