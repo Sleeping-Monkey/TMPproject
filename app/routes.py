@@ -14,6 +14,10 @@ from app.db_interaction import stage_change
 from app.db_interaction import is_gave
 from app.db_interaction import pr_gave
 from app.db_interaction import set_grades
+from app.game_logic import appoint_recipient
+
+from sys import stderr
+
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
@@ -68,10 +72,13 @@ def creategame():
 
 
 @app.route('/game', methods=["GET", "POST"])
-def game():
+def game():#конекта к разным играм нет, потому что нельзя из базы брать один элемент
+#, когда пользователь может создавать много...
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     if request.args.get("a") == "1":
         pr_gave(session['username'], game_name)
+    elif request.form['gameid']: #заглушка
+        game_name = request.form['gameid']
     stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
     data = [game_name, stage]
     if not connected(session['username'], game_name):
@@ -81,18 +88,26 @@ def game():
             data = 0
             return flask.render_template('user.html', data=data)
     if stage == 0 and not is_space_to_connect(game_name):
+        #тут, когда смена состояний, должно в базу записываться, кто кому дарит
+        #, для этого нужно вытащить из базы всех игроков в игре и бахнуть пачкой в функцию распределения
+        #appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name")) <-- 
+        #к этим данным нужен рейтинг каждого игрока допом.
         stage = stage_change(stage, game_name)
         data.pop(-1)
-        data.append(stage)
+        data.append(stage) 
     elif stage == 1 and is_gave(game_name):
         stage = stage_change(stage, game_name)
         data.pop(-1)
         data.append(stage)
     elif stage == 2:
+        #пересчёт рейтинга у того, кто дарил и смена состояния, но в 3 состоянии, если нет инфы об оценке, то писать, что её нет
         if get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1"):
             stage = stage_change(stage, game_name)
             data.pop(-1)
             data.append(stage)
+    elif stage == 3:
+        print("Тяу")
+        # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)   
     player_list = get_from_db_one_elem(game_name, "*", "player_list", "game_name")
     players = []
     data.append(get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id", "player_list",

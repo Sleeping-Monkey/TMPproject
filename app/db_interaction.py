@@ -1,5 +1,7 @@
 import sqlite3
 
+from sys import stderr
+
 
 def add_user(login, passwd):
     conn = sqlite3.connect("database.db")
@@ -55,7 +57,10 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
     # print(data)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    if what_to_return != "*":
+    #print("!!!DATA!!!", file=stderr)
+    #print(data, file=stderr)
+    #print("!!!DATA!!!", file=stderr)
+    if what_to_return != "*" and data != []:
         return data[0][0]
     else:
         return data
