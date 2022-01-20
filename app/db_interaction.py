@@ -54,7 +54,6 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
     if a == "-1":
         name = get_from_db_one_elem(search_by_what)
         data = (name,)
-    print(data)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
     #print("!!!DATA!!!", file=stderr)
@@ -141,5 +140,14 @@ def presents(game_name="bebra"):
 #     return data
 
 
+def write_to_bd(data, game_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    for i in data:
+        sql_req = """UPDATE player_list set recipient_id = ? WHERE player_id = ? and game_name = ?"""
+        req = (data[0], data[1],game_name)
+        curs.execute(sql_req, req)
+        conn.commit()
+    conn.close()
 
 

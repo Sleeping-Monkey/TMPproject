@@ -13,8 +13,10 @@ from app.db_interaction import connected
 from app.db_interaction import stage_change
 from app.db_interaction import is_gave
 from app.db_interaction import pr_gave
+from app.db_interaction import write_to_bd
 from app.db_interaction import set_grades
-# from app.game_logic import appoint_recipient
+from app.game_logic import appoint_recipient
+
 
 from sys import stderr
 
@@ -83,7 +85,6 @@ def game():
 #конекта к разным играм нет, потому что нельзя из базы брать один элемент
 #, когда пользователь может создавать много...
         game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-    print(game_name, session['username'])
     if not connected(session['username'], game_name):
         if is_space_to_connect(game_name):
             connect_game(game_name, session['username'])
@@ -99,9 +100,10 @@ def game():
         data = [gm_nm, get_from_db_one_elem(gm_nm, "stage", "game_info", "game_name")]
 
     if stage == 0 and not is_space_to_connect(game_name):
+        # write_to_bd(l_ist)
         #тут, когда смена состояний, должно в базу записываться, кто кому дарит
         #, для этого нужно вытащить из базы всех игроков в игре и бахнуть пачкой в функцию распределения
-        #appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name")) <--
+        appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name"))
         #к этим данным нужен рейтинг каждого игрока допом.
         stage = stage_change(stage, game_name)
         data.pop(-1)
@@ -136,7 +138,8 @@ def game():
 def set_score():
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     set_grades(session['username'], game_name, request.form['grade'])
-    return game()
+    data = (game_name, 3)
+    return flask.render_template('game.html', data=data)
 
 
 @app.route('/logout', methods=["GET", "POST"])
