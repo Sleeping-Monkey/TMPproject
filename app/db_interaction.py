@@ -56,9 +56,6 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
         data = (name,)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    #print("!!!DATA!!!", file=stderr)
-    #print(data, file=stderr)
-    #print("!!!DATA!!!", file=stderr)
     if what_to_return != "*" and data != []:
         return data[0][0]
     else:
@@ -128,7 +125,7 @@ def set_grades(player, game_name, grade):
     conn.close()
 
 
-def presents(game_name="bebra"):
+def presents(game_name):
     conn = sqlite3.connect("database.db")
     curs = conn.cursor()
     sql_req = """SELECT User.ID, User.Mmr
@@ -136,8 +133,7 @@ def presents(game_name="bebra"):
     data = (game_name,)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    # print(data)
-#     return data
+    return data
 
 
 def write_to_bd(data, game_name):
@@ -145,7 +141,7 @@ def write_to_bd(data, game_name):
     curs = conn.cursor()
     for i in data:
         sql_req = """UPDATE player_list set recipient_id = ? WHERE player_id = ? and game_name = ?"""
-        req = (data[0], data[1],game_name)
+        req = (data[0], data[1], game_name)
         curs.execute(sql_req, req)
         conn.commit()
     conn.close()
