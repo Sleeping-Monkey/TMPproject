@@ -3,6 +3,7 @@ import sqlite3
 from sys import stderr
 import random
 
+
 def add_user(login, passwd):
     conn = sqlite3.connect("database.db")
     curs = conn.cursor()
@@ -20,9 +21,12 @@ def log_user(login, passwd):
     data = (login,)
     passwd_check = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    if passwd == passwd_check[0][0]:
-        return True
-    else:
+    try:
+        if passwd == passwd_check[0][0]:
+            return True
+        else:
+            return False
+    except IndexError:
         return False
 
 
@@ -56,9 +60,6 @@ def get_from_db_one_elem(search_by_what, what_to_return="ID", table_name="User",
         data = (name,)
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
-    #print("!!!DATA!!!", file=stderr)
-    #print(data, file=stderr)
-    #print("!!!DATA!!!", file=stderr)
     if what_to_return != "*" and data != []:
         return data[0][0]
     else:
@@ -137,7 +138,7 @@ def presents(game_name):
     data = (curs.execute(sql_req, data)).fetchall()
     conn.close()
     if len(data) == 1:
-        write_to_bd([data[0][0], data[0][0]], game_name) # Заглушка моя, но вообще таких ебланов надо банить
+        write_to_bd([data[0][0], data[0][0]], game_name)# Заглушка моя, но вообще таких ебланов надо банить
         return
     result = [] # [кому]
     id_data = []
@@ -164,18 +165,26 @@ def presents(game_name):
                 result = id_data
     for i in range(len(data)):
         write_to_bd([data[result[i]][0], data[i][0]], game_name)
-    # print(data)
-#     return data
 
 
 def write_to_bd(data, game_name):
     conn = sqlite3.connect("database.db")
     curs = conn.cursor()
-    for i in data:
-        sql_req = """UPDATE player_list set recipient_id = ? WHERE player_id = ? and game_name = ?"""
-        req = (data[0], data[1], game_name)
-        curs.execute(sql_req, req)
-        conn.commit()
+    sql_req = """UPDATE player_list set recipient_id = ? WHERE player_id = ? and game_name = ?"""
+    req = (data[0], data[1], game_name)
+    curs.execute(sql_req, req)
+    conn.commit()
     conn.close()
 
 
+def update_mmr(player_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    player_name = get_from_db_one_elem(player_name, "recipient_id", "player_list", "player_id")
+    mmr = int(get_from_db_one_elem(player_name, "mmr", "user", "login"))
+    mmr += ((get_from_db_one_elem(player_name, "score", "player_list", "player_id", "-1") - 5) * 10)
+    sql_req = """UPDATE user set mmr = ? WHERE login = ?"""
+    data = (mmr, player_name,)
+    curs.execute(sql_req, data)
+    conn.commit()
+    conn.close()

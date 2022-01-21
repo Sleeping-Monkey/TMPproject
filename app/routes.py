@@ -13,9 +13,9 @@ from app.db_interaction import connected
 from app.db_interaction import stage_change
 from app.db_interaction import is_gave
 from app.db_interaction import pr_gave
-from app.db_interaction import write_to_bd
 from app.db_interaction import set_grades
 from app.game_logic import appoint_recipient
+from app.db_interaction import update_mmr
 import random
 
 
@@ -33,14 +33,15 @@ def home():
 
 @app.route('/user', methods=["GET", "POST"])
 def user():
-    data = []
     if request.method == "GET":
         try:
             if session['username'] != None:
                 games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+                data = []
+                rating = get_from_db_one_elem(session['username'], "mmr", "user", "login")
                 for i in range(len(games)):
                     data.append(games[i][1])
-                return flask.render_template('user.html', data=data)
+                return flask.render_template('user.html', data=data, rating=rating)
         except KeyError:
             return "Please log in"
     elif request.method == "POST":
@@ -48,9 +49,11 @@ def user():
         if log_user(login, passwd):
             session["username"] = login
             games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+            data = []
+            rating = get_from_db_one_elem(session['username'], "mmr", "user", "login")
             for i in range(len(games)):
                 data.append(games[i][1])
-            return flask.render_template('user.html', data=data)
+            return flask.render_template('user.html', data=data, rating=rating)
         else:
             return "Wrong login or password"
 
@@ -67,31 +70,38 @@ def creategame():
     game_name, player_count, creator_name = request.form['name'], request.form['count'], session['username']
     create_game(game_name, player_count, creator_name)
     connect_game(game_name, session['username'])
-    # name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     data = []
-    # данные для отображения и разделения на этапы
     games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+    rating = get_from_db_one_elem(session['username'], "mmr", "user", "login")
     for i in range(len(games)):
         data.append(games[i][1])
-    return flask.render_template('user.html', data=data)
-    # return request.form['name']
+    return flask.render_template('user.html', data=data, rating=rating)
 
 
 @app.route('/game', methods=["GET", "POST"])
 def game():
     gm_nm = ""
+    results = [-1, -1, -1, -1]
     if request.method == "POST":
         game_name = request.form['gameid']
     else:
-#конекта к разным играм нет, потому что нельзя из базы брать один элемент
-#, когда пользователь может создавать много...
         game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     if not connected(session['username'], game_name):
-        if is_space_to_connect(game_name):
-            connect_game(game_name, session['username'])
-        else:
-            data = 0
-            return flask.render_template('user.html', data=data)
+        try:
+            if is_space_to_connect(game_name):
+                connect_game(game_name, session['username'])
+            else:
+                data = 0
+                rating = get_from_db_one_elem(session['username'], "mmr", "user", "login")
+                return flask.render_template('user.html', data=data, rating=rating)
+        except TypeError:
+            data = []
+            games = get_from_db_one_elem(session['username'], "*", "player_list", "player_id", "-1")
+            for i in range(len(games)):
+                data.append(games[i][1])
+            data.append(0)
+            rating = get_from_db_one_elem(session['username'], "mmr", "user", "login")
+            return flask.render_template('user.html', data=data, rating=rating)
     if request.args.get("a") == "1":
         pr_gave(session['username'], game_name)
     stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
@@ -120,10 +130,18 @@ def game():
             stage = stage_change(stage, game_name)
             data.pop(-1)
             data.append(stage)
+            update_mmr(session['username'])
     elif stage == 3:
-        print("Тяу")
+        results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
+                                                               "player_list", "recipient_id", "-1"), "login", "User",
+                                          "ID")
+        results[1] = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
+        results[2] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id",
+                                                               "player_list", "player_id", "-1"), "login", "User", "ID")
+        results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
+        if not results[3]:
+            results[3] = "Ваш подарок пока не оценен"
         # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)
-
     if gm_nm != "":
         player_list = get_from_db_one_elem(gm_nm, "*", "player_list", "game_name")
     else:
@@ -133,15 +151,25 @@ def game():
                                                           "player_id", "-1"), "login", "user", "id"))
     for i in range(len(player_list)):
         players.append(get_from_db_one_elem(player_list[i][2], "login", "user", "ID"))
-    return flask.render_template('game.html', data=data, players=players)
+    return flask.render_template('game.html', data=data, players=players, results=results)
 
 
 @app.route('/set_score', methods=["GET", "POST"])
 def set_score():
+    results = [-1, -1, -1, -1]
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     set_grades(session['username'], game_name, request.form['grade'])
     data = (game_name, 3)
-    return flask.render_template('game.html', data=data)
+    results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
+                                                           "player_list", "recipient_id", "-1"), "login", "User", "ID")
+    results[1] = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
+    results[2] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id",
+                                                           "player_list", "player_id", "-1"), "login", "User", "ID")
+    results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
+    if not results[3]:
+        results[3] = "Ваш подарок пока не оценен"
+    update_mmr(session['username'])
+    return flask.render_template('game.html', data=data, results=results)
 
 
 @app.route('/logout', methods=["GET", "POST"])
@@ -149,4 +177,3 @@ def logout():
     session.pop("username", None)
     return flask.render_template('index.html')
 
-# @app.route('discon')

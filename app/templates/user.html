@@ -19,7 +19,7 @@
   <main>
     <section id="game-create">
       {% if session['username'] %}
-      <h1>Добро пожаловать, {{ session['username'] }}!</h1>
+      <h1>Добро пожаловать, {{ session['username'] }}, рейтинг {{ rating }}!</h1>
       {% endif %}
       <h3>Создание игры</h3>
       <form action="{{ url_for('creategame')}}" method="post" novalidate="">
@@ -34,13 +34,16 @@
       <h5>Список игр</h5>
       <ul>
         {% for i in data %}
+        {% if i != 0 %}
         <li>{{ i }}</li>
+        {% endif %}
         {% endfor %}
       </ul>
         <form action="{{ url_for('game')}}" method="post" novalidate="">
         <p>Введите идентификатор игры</p>
-          {% if data == 0 %}
-          <p>В игре нет свободного места</p>
+          {% if data[-1] == 0 %}
+          <p>В игре нет свободного места </p>
+          <p>Или она не существует</p>
           {% endif %}
         <input id="game-id" name="gameid" placeholder="gameid" required="required" type="text">
         <input id="button-join" type="submit" value="Присоединиться к игре">
