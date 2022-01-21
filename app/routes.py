@@ -16,6 +16,7 @@ from app.db_interaction import pr_gave
 from app.db_interaction import write_to_bd
 from app.db_interaction import set_grades
 from app.game_logic import appoint_recipient
+import random
 
 
 from sys import stderr
@@ -100,6 +101,7 @@ def game():
         data = [gm_nm, get_from_db_one_elem(gm_nm, "stage", "game_info", "game_name")]
 
     if stage == 0 and not is_space_to_connect(game_name):
+        presents(game_name)
         # write_to_bd(l_ist)
         #тут, когда смена состояний, должно в базу записываться, кто кому дарит
         #, для этого нужно вытащить из базы всех игроков в игре и бахнуть пачкой в функцию распределения
