@@ -156,9 +156,13 @@ def game():
 
 @app.route('/set_score', methods=["GET", "POST"])
 def set_score():
+    if request.method == "GET":
+        update_mmr(session['username'])
+    stage = 3
     results = [-1, -1, -1, -1]
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
-    set_grades(session['username'], game_name, request.form['grade'])
+    if request.method == "POST":
+        set_grades(session['username'], game_name, request.form['grade'])
 
     results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
                                                            "player_list", "recipient_id", "-1"), "login", "User", "ID")
@@ -168,9 +172,11 @@ def set_score():
     results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
     if results[3] == -1:
         results[3] = "Ваш подарок пока не оценен"
-    update_mmr(session['username'])
-    stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
-    stage = stage_change(stage, game_name)
+    if request.method == "POST":
+        update_mmr(session['username'])
+        stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
+        stage = stage_change(stage, game_name)
+
     data = (game_name, stage)
     return flask.render_template('game.html', data=data, results=results)
 

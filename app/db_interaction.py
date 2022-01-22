@@ -183,10 +183,8 @@ def update_mmr(player_name):
     player_name = get_from_db_one_elem(player_name, "recipient_id", "player_list", "player_id", "-1")
     mmr = int(get_from_db_one_elem(player_name,  "mmr", "user", "ID"))
     score = get_from_db_one_elem(player_name, "score", "player_list", "recipient_id")
-    print(mmr, score)
     if score != -1:
         mmr += ((score - 5) * 10)
-        print(mmr)
     sql_req = """UPDATE user set mmr = ? WHERE id = ?"""
     data = (mmr, player_name,)
     curs.execute(sql_req, data)
