@@ -130,7 +130,7 @@ def game():
             stage = stage_change(stage, game_name)
             data.pop(-1)
             data.append(stage)
-            update_mmr(session['username'])
+
     elif stage == 3:
         results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
                                                                "player_list", "recipient_id", "-1"), "login", "User",
@@ -139,7 +139,7 @@ def game():
         results[2] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id",
                                                                "player_list", "player_id", "-1"), "login", "User", "ID")
         results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
-        if not results[3]:
+        if results[3] == -1:
             results[3] = "Ваш подарок пока не оценен"
         # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)
     if gm_nm != "":
@@ -159,16 +159,19 @@ def set_score():
     results = [-1, -1, -1, -1]
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     set_grades(session['username'], game_name, request.form['grade'])
-    data = (game_name, 3)
+
     results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
                                                            "player_list", "recipient_id", "-1"), "login", "User", "ID")
     results[1] = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
     results[2] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id",
                                                            "player_list", "player_id", "-1"), "login", "User", "ID")
     results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
-    if not results[3]:
+    if results[3] == -1:
         results[3] = "Ваш подарок пока не оценен"
     update_mmr(session['username'])
+    stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
+    stage = stage_change(stage, game_name)
+    data = (game_name, stage)
     return flask.render_template('game.html', data=data, results=results)
 
 
