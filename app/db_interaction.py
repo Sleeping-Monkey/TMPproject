@@ -190,3 +190,13 @@ def update_mmr(player_name):
     curs.execute(sql_req, data)
     conn.commit()
     conn.close()
+
+
+def if_all_scored(game_name):
+    conn = sqlite3.connect("database.db")
+    curs = conn.cursor()
+    sql_req = """SELECT MIN(score) FROM player_list WHERE game_name = ?"""
+    data = (game_name,)
+    data = (curs.execute(sql_req, data)).fetchall()
+    conn.close()
+    return data[0][0]

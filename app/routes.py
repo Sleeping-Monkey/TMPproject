@@ -16,6 +16,7 @@ from app.db_interaction import pr_gave
 from app.db_interaction import set_grades
 from app.game_logic import appoint_recipient
 from app.db_interaction import update_mmr
+from app.db_interaction import if_all_scored
 import random
 
 
@@ -125,11 +126,12 @@ def game():
         data.pop(-1)
         data.append(stage)
     elif stage == 2:
+        if if_all_scored(game_name) != -1:
         #пересчёт рейтинга у того, кто дарил и смена состояния, но в 3 состоянии, если нет инфы об оценке, то писать, что её нет
-        if get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1"):
-            stage = stage_change(stage, game_name)
-            data.pop(-1)
-            data.append(stage)
+            if get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1"):
+                stage = stage_change(stage, game_name)
+                data.pop(-1)
+                data.append(stage)
 
     elif stage == 3:
         results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
@@ -149,16 +151,17 @@ def game():
     players = []
     data.append(get_from_db_one_elem(get_from_db_one_elem(session['username'], "recipient_id", "player_list",
                                                           "player_id", "-1"), "login", "user", "id"))
+    is_scored = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
     for i in range(len(player_list)):
         players.append(get_from_db_one_elem(player_list[i][2], "login", "user", "ID"))
-    return flask.render_template('game.html', data=data, players=players, results=results)
+    return flask.render_template('game.html', data=data, players=players, results=results, is_scored=is_scored)
 
 
 @app.route('/set_score', methods=["GET", "POST"])
 def set_score():
     if request.method == "GET":
         update_mmr(session['username'])
-    stage = 3
+    stage = 2
     results = [-1, -1, -1, -1]
     game_name = get_from_db_one_elem(session['username'], "game_name", "player_list", "player_id", "-1")
     if request.method == "POST":
@@ -173,12 +176,17 @@ def set_score():
     if results[3] == -1:
         results[3] = "Ваш подарок пока не оценен"
     if request.method == "POST":
+
         update_mmr(session['username'])
-        stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
-        stage = stage_change(stage, game_name)
+        if if_all_scored(game_name) != -1:
+            stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
+            if stage != 3:
+                stage = stage_change(stage, game_name)
+
 
     data = (game_name, stage)
-    return flask.render_template('game.html', data=data, results=results)
+    is_scored = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
+    return flask.render_template('game.html', data=data, results=results, is_scored=is_scored)
 
 
 @app.route('/logout', methods=["GET", "POST"])

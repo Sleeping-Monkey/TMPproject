@@ -47,6 +47,9 @@
       <form action="{{ url_for('set_score')}}" method="post" novalidate="">
 	      <p>Оцените подарок, который вам подарили от 0 до 10:</p>
         <input name="grade" placeholder="0" required="required" type="number">
+        {% if is_scored != -1 %}
+        <p>Вы уже оценили подарок, ожидайте других игроков</p>
+        {% endif %}
         <p>Чтобы узнать, кто сделал вам подарок, нажмите кнопку</p>
         <input class="button-login" type="submit" value="Завершить">  
       </form>
