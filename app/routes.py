@@ -133,7 +133,9 @@ def game():
                 data.pop(-1)
                 data.append(stage)
 
-    elif stage == 3:
+    if stage == 3:
+        # update_mmr(session['username'])
+        print(1)
         results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
                                                                "player_list", "recipient_id", "-1"), "login", "User",
                                           "ID")
@@ -176,14 +178,11 @@ def set_score():
     if results[3] == -1:
         results[3] = "Ваш подарок пока не оценен"
     if request.method == "POST":
-
         update_mmr(session['username'])
         if if_all_scored(game_name) != -1:
             stage = get_from_db_one_elem(game_name, "stage", "game_info", "game_name")
             if stage != 3:
                 stage = stage_change(stage, game_name)
-
-
     data = (game_name, stage)
     is_scored = get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1")
     return flask.render_template('game.html', data=data, results=results, is_scored=is_scored)
