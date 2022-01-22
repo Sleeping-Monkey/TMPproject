@@ -117,7 +117,6 @@ def game():
         #тут, когда смена состояний, должно в базу записываться, кто кому дарит
         #, для этого нужно вытащить из базы всех игроков в игре и бахнуть пачкой в функцию распределения
         appoint_recipient(get_from_db_one_elem(game_name, "*", "player_list", "game_name"))
-        #к этим данным нужен рейтинг каждого игрока допом.
         stage = stage_change(stage, game_name)
         data.pop(-1)
         data.append(stage)
@@ -127,15 +126,13 @@ def game():
         data.append(stage)
     elif stage == 2:
         if if_all_scored(game_name) != -1:
-        #пересчёт рейтинга у того, кто дарил и смена состояния, но в 3 состоянии, если нет инфы об оценке, то писать, что её нет
             if get_from_db_one_elem(session['username'], "score", "player_list", "recipient_id", "-1"):
                 stage = stage_change(stage, game_name)
                 data.pop(-1)
                 data.append(stage)
 
     if stage == 3:
-        # update_mmr(session['username'])
-        print(1)
+        update_mmr(session['username'])
         results[0] = get_from_db_one_elem(get_from_db_one_elem(session['username'], "player_id",
                                                                "player_list", "recipient_id", "-1"), "login", "User",
                                           "ID")
@@ -145,7 +142,6 @@ def game():
         results[3] = get_from_db_one_elem(session['username'], "score", "player_list", "player_id", "-1")
         if results[3] == -1:
             results[3] = "Ваш подарок пока не оценен"
-        # Добавить в данные кому дарил, какую оценку поставил, кто дарил, какую оценку поставил (см Html)
     if gm_nm != "":
         player_list = get_from_db_one_elem(gm_nm, "*", "player_list", "game_name")
     else:
